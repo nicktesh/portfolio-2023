@@ -257,6 +257,8 @@ body {
     .hero-content-lower h2 {
       color: $color-white;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      transition: color 1s, text-shadow 1s;
+      transition-delay: 0.2s;
     }
     .nav-links {
       a {
@@ -371,8 +373,6 @@ body {
       transform: translate(-50%, -50%);
       text-align: center;
       width: 100%;
-      transition: filter 1s;
-      transition-delay: 0.2s;
       @include lg-screen-down {
         position: relative;
         top: 50%;
@@ -381,6 +381,8 @@ body {
       }
       h1 {
         font-size: 180px;
+        transition: color 1s, text-shadow 1s;
+        transition-delay: 0.2s;
         @include xxl-screen-down {
           font-size: 150px;
         }
@@ -403,8 +405,6 @@ body {
       text-align: center;
       width: 100%;
       z-index: 20;
-      transition: filter 1s;
-      transition-delay: 0.2s;
       @include lg-screen-down {
         position: relative;
         margin-top: -60px;
@@ -420,6 +420,8 @@ body {
         font-size: 30px;
         font-weight: 500;
         z-index: 20;
+        transition: color 1s, text-shadow 1s;
+        transition-delay: 0.2s;
         @include lg-screen-down {
           font-size: 20px;
         }

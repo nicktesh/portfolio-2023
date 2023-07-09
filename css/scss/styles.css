@@ -470,7 +470,11 @@ body.nighttime .main-logo {
 body.nighttime .hero-content h1,
 body.nighttime .hero-content-lower h2 {
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); }
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  -webkit-transition: color 1s, text-shadow 1s;
+  transition: color 1s, text-shadow 1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s; }
 body.nighttime .nav-links a {
   color: #fff !important;
   -webkit-transition: color 1s;
@@ -594,13 +598,7 @@ body.nighttime #moon {
       -webkit-transform: translate(-50%, -50%);
               transform: translate(-50%, -50%);
       text-align: center;
-      width: 100%;
-      -webkit-transition: -webkit-filter 1s;
-      transition: -webkit-filter 1s;
-      transition: filter 1s;
-      transition: filter 1s, -webkit-filter 1s;
-      -webkit-transition-delay: 0.2s;
-              transition-delay: 0.2s; }
+      width: 100%; }
       @media (max-width: 992px) {
         .inner-banner .hero-content-wrapper .hero-content {
           position: relative;
@@ -608,7 +606,11 @@ body.nighttime #moon {
           left: 50%;
           z-index: 20; } }
       .inner-banner .hero-content-wrapper .hero-content h1 {
-        font-size: 180px; }
+        font-size: 180px;
+        -webkit-transition: color 1s, text-shadow 1s;
+        transition: color 1s, text-shadow 1s;
+        -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s; }
         @media (max-width: 1400px) {
           .inner-banner .hero-content-wrapper .hero-content h1 {
             font-size: 150px; } }
@@ -629,13 +631,7 @@ body.nighttime #moon {
               transform: translate(-50%, -50%);
       text-align: center;
       width: 100%;
-      z-index: 20;
-      -webkit-transition: -webkit-filter 1s;
-      transition: -webkit-filter 1s;
-      transition: filter 1s;
-      transition: filter 1s, -webkit-filter 1s;
-      -webkit-transition-delay: 0.2s;
-              transition-delay: 0.2s; }
+      z-index: 20; }
       @media (max-width: 992px) {
         .inner-banner .hero-content-wrapper .hero-content-lower {
           position: relative;
@@ -650,7 +646,11 @@ body.nighttime #moon {
         position: relative;
         font-size: 30px;
         font-weight: 500;
-        z-index: 20; }
+        z-index: 20;
+        -webkit-transition: color 1s, text-shadow 1s;
+        transition: color 1s, text-shadow 1s;
+        -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s; }
         @media (max-width: 992px) {
           .inner-banner .hero-content-wrapper .hero-content-lower h2 {
             font-size: 20px; } }
