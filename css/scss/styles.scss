@@ -129,9 +129,6 @@ img {
     }
   }
 }
-.wrapper {
-  padding: 0 15px;
-}
 .container-fluid {
   padding: 0;
 }
@@ -186,17 +183,18 @@ img {
 }
 // Primary Button
 .primary-btn {
-  background-color: $color-secondary;
-  color: $color-white;
-  padding: 15px 24px;
+  background-color: $color-white;
+  color: $color-black;
+  padding: 5px 12px;
   font-size: 18px;
-  border-radius: $border-radius;
   text-decoration: none;
   transition: all 0.3s ease;
+  border: 1px solid $color-black;
+  outline: none;
   &:hover,
   &:active,
   &:focus {
-    background-color: $color-secondary-50;
+    background-color: $color-primary;
     color: $color-white;
   }
   &.cta {
@@ -254,6 +252,11 @@ body {
     .mobile-menu-toggle,
     .main-logo {
       filter: invert(1);
+    }
+    .hero-content h1,
+    .hero-content-lower h2 {
+      color: $color-white;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     }
     .nav-links {
       a {
@@ -351,7 +354,81 @@ body {
   overflow: hidden;
   transition: background-color 1s;
   transition-delay: 0.2s;
-  margin-top: -120px;
+  margin-top: -135px;
+  .hero-content-wrapper {
+    width: 100%;
+    @include lg-screen-down {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+    }
+    .hero-content {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      transition: filter 1s;
+      transition-delay: 0.2s;
+      @include lg-screen-down {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+      }
+      h1 {
+        font-size: 180px;
+        @include xxl-screen-down {
+          font-size: 150px;
+        }
+        @include xl-screen-down {
+          font-size: 100px;
+        }
+        @include lg-screen-down {
+          font-size: 80px;
+        }
+        @include md-screen-down {
+          font-size: 50px;
+        }
+      }
+    }
+    .hero-content-lower {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 100%;
+      z-index: 20;
+      transition: filter 1s;
+      transition-delay: 0.2s;
+      @include lg-screen-down {
+        position: relative;
+        margin-top: -60px;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+      }
+      @include md-screen-down {
+        margin-top: -45px;
+      }
+      h2 {
+        position: relative;
+        font-size: 30px;
+        font-weight: 500;
+        z-index: 20;
+        @include lg-screen-down {
+          font-size: 20px;
+        }
+        @include md-screen-down {
+          font-size: 15px;
+        }
+      }
+    }
+  }
   .hero-background {
     position: relative;
     z-index: 15;
@@ -557,4 +634,11 @@ body {
       }
     }
   }
+}
+// Home Page Body
+.body-content {
+  overflow-x: clip;
+  background-color: rgb(245, 247, 247);
+  background-image: url(/images/paper_800px.png);
+  background-repeat: repeat;
 }
