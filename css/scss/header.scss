@@ -26,37 +26,19 @@
       margin-right: 20px;
       margin-bottom: 0;
       .main-logo {
-        width: 120px;
+        width: 200px;
         max-width: 100%;
         transition: filter 1s;
         transition-delay: 0.2s;
-        &.dark {
-          filter: invert(1);
-          transition: filter 1s;
-          transition-delay: 0.2s;
+        @include sm-screen-down {
+          width: 150px;
         }
       }
     }
-    // Bottom section of navigation
-    .bottom-section {
-      @include flexbox();
-      @include align-items(center);
-      @include justify-content(space-between);
+    .nav-links {
       @include xl-screen-down {
         display: none;
       }
-      .coffee-btn {
-        &:before {
-          @include material_icon();
-          content: "favorite";
-          position: absolute;
-          margin-right: 5px;
-          top: 0;
-          left: -20px;
-        }
-      }
-    }
-    .default-links {
       ul {
         padding: 0;
         margin-bottom: 0;
@@ -68,7 +50,8 @@
             font-weight: 600;
             text-transform: titlecase;
             text-decoration: none;
-            padding-bottom: 40px;
+            transition: color 1s;
+            transition-delay: 0.2s;
             &:hover,
             &:active,
             &:focus {
@@ -78,25 +61,10 @@
               text-decoration-thickness: 2px;
             }
           }
-          &.alt {
-            a {
-              color: $color-secondary;
-              padding-left: 10px;
-              margin-left: 10px;
-              &:before {
-                @include material_icon();
-                content: "star";
-                position: absolute;
-                top: -2px;
-                left: 10px;
-              }
-            }
-          }
         }
         li + li {
           margin-left: 10px;
           padding-left: 10px;
-          border-left: 1px solid $color-neutral;
         }
       }
     }
@@ -195,11 +163,6 @@
     @include xl-screen-up {
       display: none;
     }
-    &.dark {
-      filter: invert(1);
-      transition: filter 1s;
-      transition-delay: 0.2s;
-    }
     &:before {
       content: url("../../images/icons/menu-icon.svg");
       position: absolute;
@@ -210,6 +173,7 @@
     }
     &.close {
       opacity: 1;
+      filter: none;
       &:before {
         content: url("../../images/icons/close-icon.svg");
       }

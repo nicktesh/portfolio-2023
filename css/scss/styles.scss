@@ -5,7 +5,6 @@
 
 // Main Styles
 body {
-  height: 2000px;
   font-family: $font-primary;
   font-size: $body-font-size;
   font-weight: $body-font-weight;
@@ -118,7 +117,7 @@ img {
   color: $color-white;
 }
 .module {
-  padding: 300px 0;
+  padding: 100px 0;
   @include md-screen-down {
     padding: 50px 0;
   }
@@ -206,177 +205,7 @@ img {
     width: 100%;
   }
 }
-//----- Site Styles -----//
-#banner {
-  width: 100%;
-  height: auto;
-  background-color: #f9e2a0;
-  position: relative;
-  overflow: hidden;
-  transition: background-color 1s;
-  transition-delay: 0.2s;
-  margin-top: -120px;
-  figure {
-    margin: 0;
-    .hero-background {
-      position: relative;
-      z-index: 15;
-      &.desktop {
-        @include lg-screen-down {
-          display: none;
-        }
-      }
-      &.mobile {
-        @include lg-screen-up {
-          display: none;
-        }
-      }
-    }
-  }
-}
-
-#sun {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-size: cover;
-  background: $color-white;
-  position: absolute;
-  top: 60%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: transform 1s, opacity 1s;
-  transition-delay: 0.2s;
-  @include xl-screen-down {
-    width: 250px;
-    height: 250px;
-  }
-  @include lg-screen-down {
-    top: 50%;
-  }
-  @include md-screen-down {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-#sun .inner-glow {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: $color-white;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-name: pulse;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
-  @include xl-screen-down {
-    width: 250px;
-    height: 250px;
-  }
-  @include md-screen-down {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-#sun .outer-glow {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: $color-white;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-name: pulse-large;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
-  @include xl-screen-down {
-    width: 250px;
-    height: 250px;
-  }
-  @include md-screen-down {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-#moon {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-size: cover;
-  background: $color-white;
-  position: absolute;
-  top: 60%;
-  left: 75%;
-  opacity: 0;
-  transform: translate(-50%, 300%);
-  transition: transform 1s, opacity 1s;
-  transition-delay: 0.2s;
-  @include xl-screen-down {
-    width: 250px;
-    height: 250px;
-  }
-  @include lg-screen-down {
-    top: 50%;
-  }
-  @include md-screen-down {
-    width: 150px;
-    height: 150px;
-  }
-}
-
-#moon .outer-glow {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: $color-white;
-  opacity: 0.2;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  @include xl-screen-down {
-    width: 270px;
-    height: 270px;
-  }
-  @include md-screen-down {
-    width: 170px;
-    height: 170px;
-  }
-}
-
-#moon .inner-glow {
-  width: 310px;
-  height: 310px;
-  border-radius: 50%;
-  background: $color-white;
-  opacity: 0.2;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  @include xl-screen-down {
-    width: 260px;
-    height: 260px;
-  }
-  @include md-screen-down {
-    width: 160px;
-    height: 160px;
-  }
-}
-
+// Animations
 @keyframes pulse {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -387,7 +216,6 @@ img {
     opacity: 0;
   }
 }
-
 @keyframes pulse-large {
   0% {
     transform: translate(-50%, -50%) scale(1);
@@ -398,28 +226,335 @@ img {
     opacity: 0;
   }
 }
-
-button {
-  margin-top: 20px;
+@keyframes sway {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(calc(-1deg - 5deg * var(--random-value)));
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
 }
-
-#banner.nighttime {
-  background-color: $color-black; /* Nighttime background color */
+@keyframes twinkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: calc(0.2 + 0.9 * var(--random-value));
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
-.nighttime #sun {
-  opacity: 0;
-  transform: translate(-50%, 300%);
-  transition-delay: 0.5s;
+//----- Site Styles -----//
+body {
+  &.nighttime {
+    .mobile-menu-toggle,
+    .main-logo {
+      filter: invert(1);
+    }
+    .nav-links {
+      a {
+        color: $color-white !important;
+        transition: color 1s;
+        transition-delay: 0.2s;
+      }
+    }
+    .inner-banner {
+      background-color: #090b16;
+    }
+    .hero-background {
+      .cls-1,
+      .cls-2 {
+        fill: #1d5b79;
+        transition: fill 1s;
+        transition-delay: 0.2s;
+      }
+      .cls-1,
+      .cls-3 {
+        opacity: 0.9;
+        transition: fill 1s, opacity 1s;
+        transition-delay: 0.2s;
+      }
+      .cls-4,
+      .cls-5 {
+        fill: #22263a;
+        transition: fill 1s;
+        transition-delay: 0.2s;
+      }
+      .cls-6 {
+        fill: #688c92;
+        transition: fill 1s;
+        transition-delay: 0.2s;
+      }
+      .cls-5 {
+        opacity: 0.5;
+        transition: fill 1s, opacity 1s;
+        transition-delay: 0.2s;
+      }
+      .cls-3,
+      .cls-7 {
+        fill: #36666e;
+        transition: fill 1s;
+        transition-delay: 0.2s;
+      }
+      .cls-8,
+      .cls-9 {
+        fill: none;
+      }
+      .cls-9 {
+        clip-path: url(#clippath);
+      }
+      .cls-10 {
+        fill: #69a2ac;
+        transition: fill 1s;
+        transition-delay: 0.2s;
+      }
+      #stars {
+        opacity: 1;
+        transition: opacity 1s;
+        transition-delay: 0.2s;
+        .cls-11 {
+          fill: #ffffff;
+          opacity: 1;
+          transition: fill 1s, opacity 1s;
+          transition-delay: 0.2s;
+          animation: twinkle 2.5s infinite ease-in-out;
+          transform-origin: center;
+        }
+      }
+    }
+    #sun {
+      opacity: 0;
+      transform: translate(-50%, 300%);
+      transition-delay: 0.5s;
+    }
+    #moon {
+      top: 60%;
+      left: 75%;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+      transition-delay: 0.5s;
+      @include lg-screen-down {
+        top: 50%;
+      }
+    }
+  }
 }
-
-.nighttime #moon {
-  top: 60%;
-  left: 75%;
-  opacity: 1;
-  transform: translate(-50%, -50%);
-  transition-delay: 0.5s;
-  @include lg-screen-down {
-    top: 50%;
+.inner-banner {
+  width: 100%;
+  height: auto;
+  background-color: #f3aa60;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 1s;
+  transition-delay: 0.2s;
+  margin-top: -120px;
+  .hero-background {
+    position: relative;
+    z-index: 15;
+    transition: fill 1s;
+    transition-delay: 0.2s;
+    .cls-1,
+    .cls-2 {
+      fill: #ef6262;
+      transition: fill 1s;
+      transition-delay: 0.2s;
+    }
+    .cls-1,
+    .cls-3 {
+      opacity: 0.8;
+      transition: fill 1s, opacity 1s;
+      transition-delay: 0.2s;
+    }
+    .cls-4,
+    .cls-5 {
+      fill: #47190a;
+      transition: fill 1s;
+      transition-delay: 0.2s;
+    }
+    .cls-6 {
+      fill: #f8c2ae;
+      transition: fill 1s;
+      transition-delay: 0.2s;
+    }
+    .cls-5 {
+      opacity: 0.3;
+      transition: fill 1s, opacity 1s;
+      transition-delay: 0.2s;
+    }
+    .cls-3,
+    .cls-7 {
+      fill: #cc413a;
+      transition: fill 1s;
+      transition-delay: 0.2s;
+    }
+    .cls-8,
+    .cls-9 {
+      fill: none;
+    }
+    .cls-9 {
+      clip-path: url(#clippath);
+    }
+    .cls-10 {
+      fill: #f19776;
+      transition: fill 1s;
+      transition-delay: 0.2s;
+    }
+    #stars {
+      opacity: 0;
+      transition: opacity 1s;
+      transition-delay: 0.2s;
+      .cls-11 {
+        fill: #ffffff;
+        opacity: 0;
+        transition: fill 1s, opacity 1s;
+        transition-delay: 0.2s;
+      }
+    }
+    #trees-left .cls-4,
+    #trees-right .cls-4,
+    #trees-3 .cls-7 {
+      animation: sway 3s infinite ease-in-out;
+      transform-origin: top;
+    }
+  }
+  #sun {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-size: cover;
+    background: $color-white;
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: transform 1s, opacity 1s;
+    transition-delay: 0.2s;
+    @include xl-screen-down {
+      width: 250px;
+      height: 250px;
+    }
+    @include lg-screen-down {
+      top: 50%;
+    }
+    @include md-screen-down {
+      width: 150px;
+      height: 150px;
+    }
+    .inner-glow {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: $color-white;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-name: pulse;
+      animation-duration: 2.5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+      @include xl-screen-down {
+        width: 250px;
+        height: 250px;
+      }
+      @include md-screen-down {
+        width: 150px;
+        height: 150px;
+      }
+    }
+    .outer-glow {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: $color-white;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-name: pulse-large;
+      animation-duration: 2.5s;
+      animation-iteration-count: infinite;
+      animation-timing-function: ease;
+      @include xl-screen-down {
+        width: 250px;
+        height: 250px;
+      }
+      @include md-screen-down {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  }
+  #moon {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-size: cover;
+    background: $color-white;
+    position: absolute;
+    top: 60%;
+    left: 75%;
+    opacity: 0;
+    transform: translate(-50%, 300%);
+    transition: transform 1s, opacity 1s;
+    transition-delay: 0.2s;
+    @include xl-screen-down {
+      width: 250px;
+      height: 250px;
+    }
+    @include lg-screen-down {
+      top: 50%;
+    }
+    @include md-screen-down {
+      width: 150px;
+      height: 150px;
+    }
+    .outer-glow {
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: $color-white;
+      opacity: 0.2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      @include xl-screen-down {
+        width: 290px;
+        height: 290px;
+      }
+      @include md-screen-down {
+        width: 190px;
+        height: 190px;
+      }
+    }
+    .inner-glow {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: $color-white;
+      opacity: 0.2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      @include xl-screen-down {
+        width: 270px;
+        height: 270px;
+      }
+      @include md-screen-down {
+        width: 170px;
+        height: 170px;
+      }
+    }
   }
 }
