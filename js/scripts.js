@@ -35,13 +35,12 @@ if (document.querySelector(".mobile-menu")) {
 // Home Page Banner
 const toggleButton = document.getElementById("toggleButton");
 const body = document.body;
-let currentMode = localStorage.getItem("mode");
+const currentMode = localStorage.getItem("mode");
 
-// Checks local storage for time of day or user's preferred color scheme
-if (currentMode === "nighttime" || window.matchMedia("(prefers-color-scheme: dark)").matches) {
+// Checks local storage for time of day
+if (currentMode === "nighttime") {
   body.classList.add("nighttime");
   toggleButton.innerText = "Daytime";
-  currentMode = "nighttime";
 } else {
   localStorage.setItem("mode", "daytime");
   body.classList.remove("nighttime");
@@ -54,10 +53,8 @@ toggleButton.addEventListener("click", () => {
 
   if (currentMode === "nighttime") {
     localStorage.setItem("mode", "daytime");
-    currentMode = "daytime";
   } else {
     localStorage.setItem("mode", "nighttime");
-    currentMode = "nighttime";
   }
 
   if (toggleButton.innerText === "Nighttime") {
