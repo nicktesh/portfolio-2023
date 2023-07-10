@@ -17,6 +17,8 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 1s;
+  transition-delay: 0.2s;
   @include md-screen-down {
     font-size: $p-mobile-size;
   }
@@ -113,7 +115,7 @@ img {
   width: 100%;
 }
 ::selection {
-  background-color: $color-primary-50;
+  background-color: $color-primary;
   color: $color-white;
 }
 .module {
@@ -249,6 +251,9 @@ img {
 //----- Site Styles -----//
 body {
   &.nighttime {
+    background-color: $color-dark-blue;
+    transition: background-color 1s;
+    transition-delay: 0.2s;
     .mobile-menu-toggle,
     .main-logo {
       filter: invert(1);
@@ -256,7 +261,7 @@ body {
     .hero-content h1,
     .hero-content-lower h2 {
       color: $color-white;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 1);
       transition: color 1s, text-shadow 1s;
       transition-delay: 0.2s;
     }
@@ -268,7 +273,7 @@ body {
       }
     }
     .inner-banner {
-      background-color: #090b16;
+      background-color: $color-dark-blue;
     }
     .hero-background {
       .cls-1,
@@ -346,6 +351,32 @@ body {
         top: 50%;
       }
     }
+    .body-content {
+      overflow-x: clip;
+      background-color: $color-black;
+      background-image: url(/images/paper_800px_dark.png);
+      background-repeat: repeat;
+      transition: background-color 1s, background-image 1s;
+      transition-delay: 0.2s;
+      h3,
+      p {
+        color: $color-white;
+        transition: color 1s;
+        transition-delay: 0.2s;
+      }
+    }
+    .module.row-about-me {
+      .content {
+        border-top: 4px solid $color-white;
+        transition: border-top 1s;
+        transition-delay: 0.2s;
+      }
+    }
+    #footer {
+      background-color: $color-dark-blue;
+      transition: background-color 1s;
+      transition-delay: 0.2s;
+    }
   }
 }
 .inner-banner {
@@ -364,7 +395,7 @@ body {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 20;
+      z-index: 18;
     }
     .hero-content {
       position: absolute;
@@ -377,7 +408,7 @@ body {
         position: relative;
         top: 50%;
         left: 50%;
-        z-index: 20;
+        z-index: 18;
       }
       h1 {
         font-size: 180px;
@@ -404,13 +435,13 @@ body {
       transform: translate(-50%, -50%);
       text-align: center;
       width: 100%;
-      z-index: 20;
+      z-index: 18;
       @include lg-screen-down {
         position: relative;
         margin-top: -60px;
         top: 50%;
         left: 50%;
-        z-index: 20;
+        z-index: 18;
       }
       @include md-screen-down {
         margin-top: -45px;
@@ -418,8 +449,7 @@ body {
       h2 {
         position: relative;
         font-size: 30px;
-        font-weight: 500;
-        z-index: 20;
+        z-index: 18;
         transition: color 1s, text-shadow 1s;
         transition-delay: 0.2s;
         @include lg-screen-down {
@@ -637,10 +667,31 @@ body {
     }
   }
 }
-// Home Page Body
+// Home Page
 .body-content {
   overflow-x: clip;
   background-color: rgb(245, 247, 247);
   background-image: url(/images/paper_800px.png);
   background-repeat: repeat;
+  transition: background-color 1s, background-image 1s;
+  transition-delay: 0.2s;
+  h3,
+  p {
+    transition: color 1s;
+    transition-delay: 0.2s;
+  }
+}
+.module.row-about-me {
+  .content {
+    padding-top: 30px;
+    border-top: 4px solid $color-black;
+    transition: border-top 1s;
+    transition-delay: 0.2s;
+    p {
+      margin-bottom: 15px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }

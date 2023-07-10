@@ -1,8 +1,12 @@
 #footer {
-  background: #0b192b;
+  background-color: #0b192b;
   padding: 20px 0;
   text-align: center;
-  font-size: 12px; }
+  font-size: 12px;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s; }
   #footer p,
   #footer a {
     color: #fff;

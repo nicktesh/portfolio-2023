@@ -43,9 +43,6 @@
         transition: filter 1s, -webkit-filter 1s;
         -webkit-transition-delay: 0.2s;
                 transition-delay: 0.2s; }
-        @media (max-width: 576px) {
-          #header .main-nav .logo .main-logo {
-            width: 150px; } }
     @media (max-width: 1200px) {
       #header .main-nav .nav-links {
         display: none; } }

@@ -43,9 +43,6 @@
         transition: filter 1s, -webkit-filter 1s;
         -webkit-transition-delay: 0.2s;
                 transition-delay: 0.2s; }
-        @media (max-width: 576px) {
-          #header .main-nav .logo .main-logo {
-            width: 150px; } }
     @media (max-width: 1200px) {
       #header .main-nav .nav-links {
         display: none; } }
@@ -193,10 +190,14 @@
     pointer-events: auto; }
 
 #footer {
-  background: #0b192b;
+  background-color: #0b192b;
   padding: 20px 0;
   text-align: center;
-  font-size: 12px; }
+  font-size: 12px;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s; }
   #footer p,
   #footer a {
     color: #fff;
@@ -214,7 +215,11 @@ body {
   color: #333;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s; }
   @media (max-width: 768px) {
     body {
       font-size: 16px; } }
@@ -307,11 +312,11 @@ img {
   width: 100%; }
 
 ::-moz-selection {
-  background-color: #8d80a2;
+  background-color: #0b192b;
   color: #fff; }
 
 ::selection {
-  background-color: #8d80a2;
+  background-color: #0b192b;
   color: #fff; }
 
 .module {
@@ -463,112 +468,146 @@ img {
     opacity: calc(0.2 + 0.9 * var(--random-value)); }
   100% {
     opacity: 1; } }
-body.nighttime .mobile-menu-toggle,
-body.nighttime .main-logo {
-  -webkit-filter: invert(1);
-          filter: invert(1); }
-body.nighttime .hero-content h1,
-body.nighttime .hero-content-lower h2 {
-  color: #fff;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  -webkit-transition: color 1s, text-shadow 1s;
-  transition: color 1s, text-shadow 1s;
+body.nighttime {
+  background-color: #090b16;
+  -webkit-transition: background-color 1s;
+  transition: background-color 1s;
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s; }
-body.nighttime .nav-links a {
-  color: #fff !important;
-  -webkit-transition: color 1s;
-  transition: color 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .inner-banner {
-  background-color: #090b16; }
-body.nighttime .hero-background .cls-1,
-body.nighttime .hero-background .cls-2 {
-  fill: #1d5b79;
-  -webkit-transition: fill 1s;
-  transition: fill 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background .cls-1,
-body.nighttime .hero-background .cls-3 {
-  opacity: 0.9;
-  -webkit-transition: fill 1s, opacity 1s;
-  transition: fill 1s, opacity 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background .cls-4,
-body.nighttime .hero-background .cls-5 {
-  fill: #22263a;
-  -webkit-transition: fill 1s;
-  transition: fill 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background .cls-6 {
-  fill: #688c92;
-  -webkit-transition: fill 1s;
-  transition: fill 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background .cls-5 {
-  opacity: 0.5;
-  -webkit-transition: fill 1s, opacity 1s;
-  transition: fill 1s, opacity 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background .cls-3,
-body.nighttime .hero-background .cls-7 {
-  fill: #36666e;
-  -webkit-transition: fill 1s;
-  transition: fill 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background .cls-8,
-body.nighttime .hero-background .cls-9 {
-  fill: none; }
-body.nighttime .hero-background .cls-9 {
-  -webkit-clip-path: url(#clippath);
-          clip-path: url(#clippath); }
-body.nighttime .hero-background .cls-10 {
-  fill: #69a2ac;
-  -webkit-transition: fill 1s;
-  transition: fill 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-body.nighttime .hero-background #stars {
-  opacity: 1;
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-  -webkit-transition-delay: 0.2s;
-          transition-delay: 0.2s; }
-  body.nighttime .hero-background #stars .cls-11 {
-    fill: #ffffff;
-    opacity: 1;
+  body.nighttime .mobile-menu-toggle,
+  body.nighttime .main-logo {
+    -webkit-filter: invert(1);
+            filter: invert(1); }
+  body.nighttime .hero-content h1,
+  body.nighttime .hero-content-lower h2 {
+    color: #fff;
+    text-shadow: 0 0 3px black;
+    -webkit-transition: color 1s, text-shadow 1s;
+    transition: color 1s, text-shadow 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .nav-links a {
+    color: #fff !important;
+    -webkit-transition: color 1s;
+    transition: color 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .inner-banner {
+    background-color: #090b16; }
+  body.nighttime .hero-background .cls-1,
+  body.nighttime .hero-background .cls-2 {
+    fill: #1d5b79;
+    -webkit-transition: fill 1s;
+    transition: fill 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background .cls-1,
+  body.nighttime .hero-background .cls-3 {
+    opacity: 0.9;
     -webkit-transition: fill 1s, opacity 1s;
     transition: fill 1s, opacity 1s;
     -webkit-transition-delay: 0.2s;
-            transition-delay: 0.2s;
-    -webkit-animation: twinkle 2.5s infinite ease-in-out;
-            animation: twinkle 2.5s infinite ease-in-out;
-    -webkit-transform-origin: center;
-            transform-origin: center; }
-body.nighttime #sun {
-  opacity: 0;
-  -webkit-transform: translate(-50%, 300%);
-          transform: translate(-50%, 300%);
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s; }
-body.nighttime #moon {
-  top: 60%;
-  left: 75%;
-  opacity: 1;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transition-delay: 0.5s;
-          transition-delay: 0.5s; }
-  @media (max-width: 992px) {
-    body.nighttime #moon {
-      top: 50%; } }
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background .cls-4,
+  body.nighttime .hero-background .cls-5 {
+    fill: #22263a;
+    -webkit-transition: fill 1s;
+    transition: fill 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background .cls-6 {
+    fill: #688c92;
+    -webkit-transition: fill 1s;
+    transition: fill 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background .cls-5 {
+    opacity: 0.5;
+    -webkit-transition: fill 1s, opacity 1s;
+    transition: fill 1s, opacity 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background .cls-3,
+  body.nighttime .hero-background .cls-7 {
+    fill: #36666e;
+    -webkit-transition: fill 1s;
+    transition: fill 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background .cls-8,
+  body.nighttime .hero-background .cls-9 {
+    fill: none; }
+  body.nighttime .hero-background .cls-9 {
+    -webkit-clip-path: url(#clippath);
+            clip-path: url(#clippath); }
+  body.nighttime .hero-background .cls-10 {
+    fill: #69a2ac;
+    -webkit-transition: fill 1s;
+    transition: fill 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime .hero-background #stars {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+    body.nighttime .hero-background #stars .cls-11 {
+      fill: #ffffff;
+      opacity: 1;
+      -webkit-transition: fill 1s, opacity 1s;
+      transition: fill 1s, opacity 1s;
+      -webkit-transition-delay: 0.2s;
+              transition-delay: 0.2s;
+      -webkit-animation: twinkle 2.5s infinite ease-in-out;
+              animation: twinkle 2.5s infinite ease-in-out;
+      -webkit-transform-origin: center;
+              transform-origin: center; }
+  body.nighttime #sun {
+    opacity: 0;
+    -webkit-transform: translate(-50%, 300%);
+            transform: translate(-50%, 300%);
+    -webkit-transition-delay: 0.5s;
+            transition-delay: 0.5s; }
+  body.nighttime #moon {
+    top: 60%;
+    left: 75%;
+    opacity: 1;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    -webkit-transition-delay: 0.5s;
+            transition-delay: 0.5s; }
+    @media (max-width: 992px) {
+      body.nighttime #moon {
+        top: 50%; } }
+  body.nighttime .body-content {
+    overflow-x: clip;
+    background-color: #000;
+    background-image: url(/images/paper_800px_dark.png);
+    background-repeat: repeat;
+    -webkit-transition: background-color 1s, background-image 1s;
+    transition: background-color 1s, background-image 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+    body.nighttime .body-content h3,
+    body.nighttime .body-content p {
+      color: #fff;
+      -webkit-transition: color 1s;
+      transition: color 1s;
+      -webkit-transition-delay: 0.2s;
+              transition-delay: 0.2s; }
+  body.nighttime .module.row-about-me .content {
+    border-top: 4px solid #fff;
+    -webkit-transition: border-top 1s;
+    transition: border-top 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+  body.nighttime #footer {
+    background-color: #090b16;
+    -webkit-transition: background-color 1s;
+    transition: background-color 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
 
 .inner-banner {
   width: 100%;
@@ -590,7 +629,7 @@ body.nighttime #moon {
         left: 50%;
         -webkit-transform: translate(-50%, -50%);
                 transform: translate(-50%, -50%);
-        z-index: 20; } }
+        z-index: 18; } }
     .inner-banner .hero-content-wrapper .hero-content {
       position: absolute;
       top: 35%;
@@ -604,7 +643,7 @@ body.nighttime #moon {
           position: relative;
           top: 50%;
           left: 50%;
-          z-index: 20; } }
+          z-index: 18; } }
       .inner-banner .hero-content-wrapper .hero-content h1 {
         font-size: 180px;
         -webkit-transition: color 1s, text-shadow 1s;
@@ -631,22 +670,21 @@ body.nighttime #moon {
               transform: translate(-50%, -50%);
       text-align: center;
       width: 100%;
-      z-index: 20; }
+      z-index: 18; }
       @media (max-width: 992px) {
         .inner-banner .hero-content-wrapper .hero-content-lower {
           position: relative;
           margin-top: -60px;
           top: 50%;
           left: 50%;
-          z-index: 20; } }
+          z-index: 18; } }
       @media (max-width: 768px) {
         .inner-banner .hero-content-wrapper .hero-content-lower {
           margin-top: -45px; } }
       .inner-banner .hero-content-wrapper .hero-content-lower h2 {
         position: relative;
         font-size: 30px;
-        font-weight: 500;
-        z-index: 20;
+        z-index: 18;
         -webkit-transition: color 1s, text-shadow 1s;
         transition: color 1s, text-shadow 1s;
         -webkit-transition-delay: 0.2s;
@@ -893,6 +931,28 @@ body.nighttime #moon {
   overflow-x: clip;
   background-color: #f5f7f7;
   background-image: url(/images/paper_800px.png);
-  background-repeat: repeat; }
+  background-repeat: repeat;
+  -webkit-transition: background-color 1s, background-image 1s;
+  transition: background-color 1s, background-image 1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s; }
+  .body-content h3,
+  .body-content p {
+    -webkit-transition: color 1s;
+    transition: color 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+
+.module.row-about-me .content {
+  padding-top: 30px;
+  border-top: 4px solid #000;
+  -webkit-transition: border-top 1s;
+  transition: border-top 1s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s; }
+  .module.row-about-me .content p {
+    margin-bottom: 15px; }
+    .module.row-about-me .content p:last-child {
+      margin-bottom: 0; }
 
 /*# sourceMappingURL=styles.css.map */

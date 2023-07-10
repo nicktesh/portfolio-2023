@@ -37,9 +37,6 @@
         max-width: 100%;
         transition: filter 1s;
         transition-delay: 0.2s;
-        @include sm-screen-down {
-          width: 150px;
-        }
       }
     }
     .nav-links {
