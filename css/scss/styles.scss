@@ -667,6 +667,15 @@ body {
     }
   }
 }
+// Parallax Scroll Effect
+g,
+.hero-content h1,
+.hero-content-lower h2 {
+  transform: translateY(calc(var(--scrollPos, 0) * var(--offset, 0)));
+  @media (prefers-reduced-motion: reduce) {
+    transform: translateY(0);
+  }
+}
 // Home Page
 .body-content {
   overflow-x: clip;

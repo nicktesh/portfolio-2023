@@ -927,6 +927,18 @@ body.nighttime {
           width: 170px;
           height: 170px; } }
 
+g,
+.hero-content h1,
+.hero-content-lower h2 {
+  -webkit-transform: translateY(calc(var(--scrollPos, 0) * var(--offset, 0)));
+          transform: translateY(calc(var(--scrollPos, 0) * var(--offset, 0))); }
+  @media (prefers-reduced-motion: reduce) {
+    g,
+    .hero-content h1,
+    .hero-content-lower h2 {
+      -webkit-transform: translateY(0);
+              transform: translateY(0); } }
+
 .body-content {
   overflow-x: clip;
   background-color: #f5f7f7;
