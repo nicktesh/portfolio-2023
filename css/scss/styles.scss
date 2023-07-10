@@ -354,7 +354,7 @@ body {
     .body-content {
       overflow-x: clip;
       background-color: $color-black;
-      background-image: url(/images/paper_800px_dark.png);
+      background-image: url(../../images/paper_800px_dark.png);
       background-repeat: repeat;
       transition: background-color 1s, background-image 1s;
       transition-delay: 0.2s;
@@ -671,7 +671,7 @@ body {
 .body-content {
   overflow-x: clip;
   background-color: rgb(245, 247, 247);
-  background-image: url(/images/paper_800px.png);
+  background-image: url(../../images/paper_800px.png);
   background-repeat: repeat;
   transition: background-color 1s, background-image 1s;
   transition-delay: 0.2s;
