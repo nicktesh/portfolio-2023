@@ -470,7 +470,7 @@ body.nighttime .main-logo {
 body.nighttime .hero-content h1,
 body.nighttime .hero-content-lower h2 {
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   -webkit-transition: color 1s, text-shadow 1s;
   transition: color 1s, text-shadow 1s;
   -webkit-transition-delay: 0.2s;
