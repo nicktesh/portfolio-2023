@@ -676,7 +676,8 @@ body.nighttime {
   transition: background-color 1s;
   -webkit-transition-delay: 0.2s;
           transition-delay: 0.2s;
-  margin-top: -135px; }
+  margin-top: -135px;
+  overflow-x: hidden; }
   .inner-banner .hero-content-wrapper {
     width: 100%; }
     @media (max-width: 992px) {
@@ -716,7 +717,7 @@ body.nighttime {
         @media (max-width: 992px) {
           .inner-banner .hero-content-wrapper .hero-content h1 {
             font-size: 80px; } }
-        @media (max-width: 768px) {
+        @media (max-width: 576px) {
           .inner-banner .hero-content-wrapper .hero-content h1 {
             font-size: 50px; } }
     .inner-banner .hero-content-wrapper .hero-content-lower {
@@ -749,7 +750,7 @@ body.nighttime {
         @media (max-width: 992px) {
           .inner-banner .hero-content-wrapper .hero-content-lower h2 {
             font-size: 20px; } }
-        @media (max-width: 768px) {
+        @media (max-width: 576px) {
           .inner-banner .hero-content-wrapper .hero-content-lower h2 {
             font-size: 15px; } }
   .inner-banner .hero-background {
@@ -1026,10 +1027,16 @@ body.nighttime {
     .inner-banner .bird-wrapper #bird-svg-2 {
       width: 65%;
       margin-left: -50px; }
+      @media (max-width: 576px) {
+        .inner-banner .bird-wrapper #bird-svg-2 {
+          display: none; } }
     .inner-banner .bird-wrapper #bird-svg-3 {
       width: 85%;
       margin-bottom: -20px;
       margin-right: -45px; }
+      @media (max-width: 576px) {
+        .inner-banner .bird-wrapper #bird-svg-3 {
+          display: none; } }
 
 g,
 .hero-content h1,

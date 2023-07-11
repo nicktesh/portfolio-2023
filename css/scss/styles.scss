@@ -424,6 +424,7 @@ body {
   transition: background-color 1s;
   transition-delay: 0.2s;
   margin-top: -135px;
+  overflow-x: hidden;
   .hero-content-wrapper {
     width: 100%;
     @include lg-screen-down {
@@ -459,7 +460,7 @@ body {
         @include lg-screen-down {
           font-size: 80px;
         }
-        @include md-screen-down {
+        @include sm-screen-down {
           font-size: 50px;
         }
       }
@@ -491,7 +492,7 @@ body {
         @include lg-screen-down {
           font-size: 20px;
         }
-        @include md-screen-down {
+        @include sm-screen-down {
           font-size: 15px;
         }
       }
@@ -738,11 +739,17 @@ body {
     #bird-svg-2 {
       width: 65%;
       margin-left: -50px;
+      @include sm-screen-down {
+        display: none;
+      }
     }
     #bird-svg-3 {
       width: 85%;
       margin-bottom: -20px;
       margin-right: -45px;
+      @include sm-screen-down {
+        display: none;
+      }
     }
   }
 }
