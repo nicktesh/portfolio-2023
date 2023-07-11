@@ -213,6 +213,7 @@ body {
   position: relative;
   background-color: #fff;
   color: #333;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -468,6 +469,56 @@ img {
     opacity: calc(0.2 + 0.9 * var(--random-value)); }
   100% {
     opacity: 1; } }
+@-webkit-keyframes birdflap {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotateX(-60deg);
+            transform: rotateX(-60deg); }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); } }
+@keyframes birdflap {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotateX(-60deg);
+            transform: rotateX(-60deg); }
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); } }
+@-webkit-keyframes birdfloat {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(-32px);
+            transform: translateY(-32px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+@keyframes birdfloat {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); }
+  50% {
+    -webkit-transform: translateY(-32px);
+            transform: translateY(-32px); }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+@-webkit-keyframes birdmove {
+  0% {
+    left: -100px; }
+  100% {
+    left: 3000px; } }
+@keyframes birdmove {
+  0% {
+    left: -100px; }
+  100% {
+    left: 3000px; } }
 body.nighttime {
   background-color: #090b16;
   -webkit-transition: background-color 1s;
@@ -580,6 +631,12 @@ body.nighttime {
     @media (max-width: 992px) {
       body.nighttime #moon {
         top: 50%; } }
+  body.nighttime .bird-wrapper {
+    opacity: 0;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
   body.nighttime .body-content {
     overflow-x: clip;
     background-color: #000;
@@ -926,6 +983,53 @@ body.nighttime {
         .inner-banner #moon .inner-glow {
           width: 170px;
           height: 170px; } }
+  .inner-banner .bird-wrapper {
+    max-width: 50px;
+    width: 50px;
+    padding: 10px;
+    position: absolute;
+    top: 10%;
+    left: -100px;
+    z-index: 18;
+    -webkit-animation: birdmove 40s infinite linear;
+            animation: birdmove 40s infinite linear;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+    @media (max-width: 992px) {
+      .inner-banner .bird-wrapper {
+        top: 10%; } }
+    .inner-banner .bird-wrapper #bird-svg #body,
+    .inner-banner .bird-wrapper #bird-svg-2 #body,
+    .inner-banner .bird-wrapper #bird-svg-3 #body {
+      -webkit-animation: birdfloat 1.5s infinite ease-in-out;
+              animation: birdfloat 1.5s infinite ease-in-out;
+      -webkit-transform-origin: center;
+              transform-origin: center; }
+    .inner-banner .bird-wrapper #bird-svg #right-wing,
+    .inner-banner .bird-wrapper #bird-svg-2 #right-wing,
+    .inner-banner .bird-wrapper #bird-svg-3 #right-wing {
+      -webkit-animation: birdflap 1.5s infinite ease-in-out;
+              animation: birdflap 1.5s infinite ease-in-out;
+      -webkit-transform-origin: top;
+              transform-origin: top; }
+    .inner-banner .bird-wrapper #bird-svg #left-wing,
+    .inner-banner .bird-wrapper #bird-svg-2 #left-wing,
+    .inner-banner .bird-wrapper #bird-svg-3 #left-wing {
+      -webkit-animation: birdflap 1.5s infinite ease-in-out;
+              animation: birdflap 1.5s infinite ease-in-out;
+      -webkit-transform-origin: top;
+              transform-origin: top; }
+    .inner-banner .bird-wrapper #bird-svg {
+      width: 100%; }
+    .inner-banner .bird-wrapper #bird-svg-2 {
+      width: 65%;
+      margin-left: -50px; }
+    .inner-banner .bird-wrapper #bird-svg-3 {
+      width: 85%;
+      margin-bottom: -20px;
+      margin-right: -45px; }
 
 g,
 .hero-content h1,
