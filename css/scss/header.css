@@ -52,9 +52,10 @@
       #header .main-nav .nav-links ul li {
         display: inline-block; }
         #header .main-nav .nav-links ul li a {
-          color: #000;
+          color: #202020;
           font-size: 16px;
-          font-weight: 600;
+          font-weight: 400;
+          font-family: "Kanit", sans-serif;
           text-transform: titlecase;
           text-decoration: none;
           -webkit-transition: color 1s;

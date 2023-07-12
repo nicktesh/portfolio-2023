@@ -49,9 +49,10 @@
         li {
           display: inline-block;
           a {
-            color: $color-black;
+            color: $color-dark-grey;
             font-size: $a-size;
-            font-weight: 600;
+            font-weight: 400;
+            font-family: $font-secondary;
             text-transform: titlecase;
             text-decoration: none;
             transition: color 1s;

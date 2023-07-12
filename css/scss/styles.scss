@@ -333,7 +333,7 @@ body {
     transition-delay: 0.2s;
     .mobile-menu-toggle,
     .main-logo {
-      filter: invert(1);
+      filter: invert(1) brightness(1000%);
     }
     .hero-content h1,
     .hero-content-lower h2 {
@@ -538,6 +538,7 @@ body {
       h2 {
         position: relative;
         font-size: 30px;
+        font-weight: 400;
         z-index: 18;
         transition: color 1s, text-shadow 1s;
         transition-delay: 0.2s;
@@ -844,7 +845,7 @@ g,
 .module.row-about-me {
   .content {
     padding-top: 30px;
-    border-top: 4px solid $color-black;
+    border-top: 4px solid $color-dark-grey;
     transition: border-top 1s;
     transition-delay: 0.2s;
     p {

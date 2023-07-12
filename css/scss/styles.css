@@ -52,9 +52,10 @@
       #header .main-nav .nav-links ul li {
         display: inline-block; }
         #header .main-nav .nav-links ul li a {
-          color: #000;
+          color: #202020;
           font-size: 16px;
-          font-weight: 600;
+          font-weight: 400;
+          font-family: "Kanit", sans-serif;
           text-transform: titlecase;
           text-decoration: none;
           -webkit-transition: color 1s;
@@ -235,12 +236,12 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 16px;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Kanit", sans-serif; }
 
 h1 {
   font-size: 40px;
   font-weight: 700;
-  color: #000; }
+  color: #202020; }
   @media (max-width: 768px) {
     h1 {
       font-size: 28px; } }
@@ -248,7 +249,7 @@ h1 {
 h2 {
   font-size: 32px;
   font-weight: 600;
-  color: #000; }
+  color: #202020; }
   @media (max-width: 768px) {
     h2 {
       font-size: 26px; } }
@@ -256,7 +257,7 @@ h2 {
 h3 {
   font-size: 24px;
   font-weight: 600;
-  color: #000; }
+  color: #202020; }
   @media (max-width: 768px) {
     h3 {
       font-size: 24px; } }
@@ -264,7 +265,7 @@ h3 {
 h4 {
   font-size: 20px;
   font-weight: 600;
-  color: #000; }
+  color: #202020; }
   @media (max-width: 768px) {
     h4 {
       font-size: 22px; } }
@@ -272,7 +273,7 @@ h4 {
 h5 {
   font-size: 16px;
   font-weight: 600;
-  color: #000; }
+  color: #202020; }
   @media (max-width: 768px) {
     h5 {
       font-size: 20px; } }
@@ -280,7 +281,7 @@ h5 {
 h6 {
   font-size: 14px;
   font-weight: 600;
-  color: #000; }
+  color: #202020; }
   @media (max-width: 768px) {
     h6 {
       font-size: 18px; } }
@@ -612,8 +613,8 @@ body.nighttime {
           transition-delay: 0.2s; }
   body.nighttime .mobile-menu-toggle,
   body.nighttime .main-logo {
-    -webkit-filter: invert(1);
-            filter: invert(1); }
+    -webkit-filter: invert(1) brightness(1000%);
+            filter: invert(1) brightness(1000%); }
   body.nighttime .hero-content h1,
   body.nighttime .hero-content-lower h2 {
     color: #fff;
@@ -835,6 +836,7 @@ body.nighttime {
       .inner-banner .hero-content-wrapper .hero-content-lower h2 {
         position: relative;
         font-size: 30px;
+        font-weight: 400;
         z-index: 18;
         -webkit-transition: color 1s, text-shadow 1s;
         transition: color 1s, text-shadow 1s;
@@ -1174,7 +1176,7 @@ g,
 
 .module.row-about-me .content {
   padding-top: 30px;
-  border-top: 4px solid #000;
+  border-top: 4px solid #202020;
   -webkit-transition: border-top 1s;
   transition: border-top 1s;
   -webkit-transition-delay: 0.2s;

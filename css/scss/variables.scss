@@ -23,6 +23,7 @@ $color-white: #fff;
 $color-neutral: #eaeaea;
 $color-neutral-50: #f5f5f5;
 $color-dark-blue: #090b16;
+$color-dark-grey: #202020;
 $color-success: #28a745;
 $color-danger: #dc3545;
 
@@ -62,18 +63,18 @@ $a-weight: 700;
 $body-font-weight: $p-weight;
 
 // Font Color
-$h1-color: $color-black;
-$h2-color: $color-black;
-$h3-color: $color-black;
-$h4-color: $color-black;
-$h5-color: $color-black;
-$h6-color: $color-black;
+$h1-color: $color-dark-grey;
+$h2-color: $color-dark-grey;
+$h3-color: $color-dark-grey;
+$h4-color: $color-dark-grey;
+$h5-color: $color-dark-grey;
+$h6-color: $color-dark-grey;
 $p-color: $color-text;
 $a-color: $color-primary;
 
 // Font Family
 $font-primary: "Cabin", sans-serif;
-$font-secondary: "Montserrat", sans-serif;
+$font-secondary: "Kanit", sans-serif;
 
 // Font Line Height and Spacing
 $body-font-line-height: 1.667;
