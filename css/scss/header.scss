@@ -35,6 +35,8 @@
           &.nighttime {
             &:before {
               content: url("../../images/icons/moon-icon.svg");
+              width: 40px;
+              height: 40px;
               position: relative;
               bottom: -5px;
             }
@@ -42,6 +44,8 @@
           &.daytime {
             &:before {
               content: url("../../images/icons/sun-icon.svg");
+              width: 40px;
+              height: 40px;
               position: relative;
               bottom: -5px;
             }
