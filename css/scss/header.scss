@@ -25,7 +25,27 @@
         @include flexbox();
         @include align-items(center);
         #toggleButton {
-          margin-right: 20px;
+          margin-right: 10px;
+        }
+        #toggleButton {
+          width: 40px;
+          height: 40px;
+          background: transparent;
+          border: none;
+          &.nighttime {
+            &:before {
+              content: url("../../images/icons/moon-icon.svg");
+              position: relative;
+              bottom: -5px;
+            }
+          }
+          &.daytime {
+            &:before {
+              content: url("../../images/icons/sun-icon.svg");
+              position: relative;
+              bottom: -5px;
+            }
+          }
         }
       }
     }

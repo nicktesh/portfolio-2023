@@ -30,7 +30,20 @@
         -ms-flex-align: center;
         align-items: center; }
         #header .main-nav .top-section .right-side #toggleButton {
-          margin-right: 20px; }
+          margin-right: 10px; }
+        #header .main-nav .top-section .right-side #toggleButton {
+          width: 40px;
+          height: 40px;
+          background: transparent;
+          border: none; }
+          #header .main-nav .top-section .right-side #toggleButton.nighttime:before {
+            content: url("../../images/icons/moon-icon.svg");
+            position: relative;
+            bottom: -5px; }
+          #header .main-nav .top-section .right-side #toggleButton.daytime:before {
+            content: url("../../images/icons/sun-icon.svg");
+            position: relative;
+            bottom: -5px; }
     #header .main-nav .logo {
       margin-right: 20px;
       margin-bottom: 0; }

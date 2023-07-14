@@ -40,11 +40,13 @@ const currentMode = localStorage.getItem("mode");
 // Checks local storage for time of day
 if (currentMode === "nighttime") {
   body.classList.add("nighttime");
-  toggleButton.innerText = "Daytime";
+  toggleButton.classList.add("daytime");
+  toggleButton.classList.remove("nighttime");
 } else {
   localStorage.setItem("mode", "daytime");
   body.classList.remove("nighttime");
-  toggleButton.innerText = "Nighttime";
+  toggleButton.classList.add("nighttime");
+  toggleButton.classList.remove("daytime");
 }
 
 // On click of time of day button, switch between day or night
@@ -57,10 +59,12 @@ toggleButton.addEventListener("click", () => {
     localStorage.setItem("mode", "nighttime");
   }
 
-  if (toggleButton.innerText === "Nighttime") {
-    toggleButton.innerText = "Daytime";
+  if (toggleButton.classList.contains("nighttime")) {
+    toggleButton.classList.add("daytime");
+    toggleButton.classList.remove("nighttime");
   } else {
-    toggleButton.innerText = "Nighttime";
+    toggleButton.classList.add("nighttime");
+    toggleButton.classList.remove("daytime");
   }
 });
 

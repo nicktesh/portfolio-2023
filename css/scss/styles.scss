@@ -186,24 +186,24 @@ img {
 }
 // Primary Button
 .primary-btn {
-  background-color: $color-white;
-  color: $color-black;
-  padding: 5px 12px;
-  font-size: 18px;
+  @include flexbox();
+  @include justify-content(right);
+  background-color: $color-dark-grey;
+  color: $color-white;
+  border: 2px solid $color-black;
+  padding: 18px 18px 5px 5px;
+  width: 235px;
+  font-family: $font-secondary;
+  font-weight: 500;
+  text-transform: uppercase;
   text-decoration: none;
   transition: all 0.3s ease;
-  border: 1px solid $color-black;
   outline: none;
   &:hover,
   &:active,
   &:focus {
     background-color: $color-primary;
     color: $color-white;
-  }
-  &.cta {
-    @include flexbox();
-    @include justify-content(center);
-    width: 100%;
   }
 }
 // Animations
