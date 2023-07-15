@@ -37,14 +37,17 @@
           -webkit-box-pack: flex-start;
           -ms-flex-pack: flex-start;
           justify-content: flex-start;
+          -webkit-box-align: flex-start;
+          -ms-flex-align: flex-start;
+          align-items: flex-start;
           width: 50px;
           height: 25px;
           background-color: #202020;
           border: none;
           border-radius: 20px;
           margin-right: 20px;
-          -webkit-transition: background-color 1s justify-content 1s !important;
-          transition: background-color 1s justify-content 1s !important;
+          -webkit-transition: background-color 1s justify-content 1s align-items 1s !important;
+          transition: background-color 1s justify-content 1s align-items 1s !important;
           -webkit-transition-delay: 0.2s;
                   transition-delay: 0.2s; }
           #header .main-nav .top-section .right-side #toggleButton:before {

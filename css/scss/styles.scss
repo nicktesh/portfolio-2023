@@ -351,8 +351,9 @@ body {
     }
     #toggleButton {
       @include justify-content(flex-end !important);
+      @include align-items(flex-end !important);
       background-color: $color-white !important;
-      transition: background-color 1s justify-content 1s !important;
+      transition: background-color 1s justify-content 1s align-items 1s !important;
       transition-delay: 0.2s;
       &:before {
         content: url("../../images/icons/sun-icon.svg") !important;
