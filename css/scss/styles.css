@@ -1247,7 +1247,8 @@ g,
     padding: 0 15px; }
     @media (max-width: 992px) {
       .module.row-portfolio .row {
-        margin-bottom: 15px; } }
+        margin-bottom: 15px;
+        padding: 0; } }
     @media (max-width: 992px) {
       .module.row-portfolio .row:first-child {
         margin-bottom: 0; } }
@@ -1264,17 +1265,31 @@ g,
       -ms-flex: 0 0 100%;
       flex: 0 0 100%;
       max-width: 100%; } }
+  .module.row-portfolio a:hover .content-wrapper, .module.row-portfolio a:active .content-wrapper, .module.row-portfolio a:focus .content-wrapper {
+    background-color: #ef6262;
+    border: 1px solid #ef6262;
+    -webkit-transition: background-color 0.2s, border 0.2s;
+    transition: background-color 0.2s, border 0.2s; }
+  .module.row-portfolio a:hover .content-inner .bottom-section, .module.row-portfolio a:active .content-inner .bottom-section, .module.row-portfolio a:focus .content-inner .bottom-section {
+    background-color: #ef6262;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s; }
   .module.row-portfolio .content-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     height: 100%;
-    background-color: grey; }
+    background-color: #fff;
+    border: 1px solid #202020;
+    overflow: hidden; }
     @media (max-width: 992px) {
       .module.row-portfolio .content-wrapper {
         margin-top: 15px; } }
     .module.row-portfolio .content-wrapper .row {
       margin-bottom: 0; }
+      @media (max-width: 992px) {
+        .module.row-portfolio .content-wrapper .row {
+          padding: 0 15px; } }
     .module.row-portfolio .content-wrapper .content-inner {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -1286,15 +1301,21 @@ g,
       -webkit-box-direction: wrap;
       -ms-flex-flow: wrap;
       flex-flow: wrap;
-      padding: 20px 20px 40px 40px; }
+      padding: 20px 20px 40px 40px;
+      width: 100%; }
       .module.row-portfolio .content-wrapper .content-inner .bottom-section {
-        background-color: grey; }
+        background-color: #fff;
+        width: 100%; }
     .module.row-portfolio .content-wrapper img {
       max-width: 40px; }
+  .module.row-portfolio .col-lg-4 .content-inner {
+    padding: 0; }
+    .module.row-portfolio .col-lg-4 .content-inner .bottom-section {
+      padding: 20px 20px 40px 40px; }
   .module.row-portfolio .background-image {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     min-height: 400px; }
     .module.row-portfolio .background-image.project-1 {
       background-image: url(../../images/OG-image.jpg); }

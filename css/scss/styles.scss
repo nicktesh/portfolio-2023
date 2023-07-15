@@ -884,6 +884,7 @@ g,
     padding: 0 15px;
     @include lg-screen-down() {
       margin-bottom: 15px;
+      padding: 0;
     }
     &:first-child {
       @include lg-screen-down() {
@@ -907,33 +908,65 @@ g,
       max-width: 100%;
     }
   }
+  a {
+    &:hover,
+    &:active,
+    &:focus {
+      .content-wrapper {
+        background-color: $color-secondary;
+        border: 1px solid $color-secondary;
+        transition: background-color 0.2s, border 0.2s;
+      }
+      .content-inner {
+        .bottom-section {
+          background-color: $color-secondary;
+          transition: background-color 0.2s;
+        }
+      }
+    }
+  }
   .content-wrapper {
     @include flexbox();
     height: 100%;
-    background-color: grey;
+    background-color: $color-white;
+    border: 1px solid $color-dark-grey;
+    overflow: hidden;
     @include lg-screen-down() {
       margin-top: 15px;
     }
     .row {
       margin-bottom: 0;
+      @include lg-screen-down() {
+        padding: 0 15px;
+      }
     }
     .content-inner {
       @include flexbox();
       @include align-items(flex-end);
       @include flex-flow(wrap);
       padding: 20px 20px 40px 40px;
+      width: 100%;
       .bottom-section {
-        background-color: grey;
+        background-color: $color-white;
+        width: 100%;
       }
     }
     img {
       max-width: 40px;
     }
   }
+  .col-lg-4 {
+    .content-inner {
+      padding: 0;
+      .bottom-section {
+        padding: 20px 20px 40px 40px;
+      }
+    }
+  }
   .background-image {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center;
     min-height: 400px;
     &.project-1 {
       background-image: url(../../images/OG-image.jpg);
