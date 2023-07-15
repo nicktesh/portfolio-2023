@@ -350,10 +350,8 @@ body {
       }
     }
     #toggleButton {
-      @include justify-content(flex-end !important);
-      @include align-items(flex-end !important);
       background-color: $color-white !important;
-      transition: background-color 1s justify-content 1s align-items 1s !important;
+      transition: background-color 1s;
       transition-delay: 0.2s;
       &:before {
         content: url("../../images/icons/sun-icon.svg") !important;
@@ -361,6 +359,13 @@ body {
         display: block;
         width: 15px;
         height: 15px;
+        left: unset !important;
+        right: 5px;
+        transition: left 1s right 1s;
+        transition-delay: 0.2s;
+      }
+      .sr-only {
+        color: $color-black !important;
       }
     }
     .inner-banner {
