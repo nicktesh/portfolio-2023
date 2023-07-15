@@ -30,24 +30,30 @@
         -ms-flex-align: center;
         align-items: center; }
         #header .main-nav .top-section .right-side #toggleButton {
-          margin-right: 10px; }
-        #header .main-nav .top-section .right-side #toggleButton {
-          width: 40px;
-          height: 40px;
-          background: transparent;
-          border: none; }
-          #header .main-nav .top-section .right-side #toggleButton.nighttime:before {
+          position: relative;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: flex-start;
+          -ms-flex-pack: flex-start;
+          justify-content: flex-start;
+          width: 50px;
+          height: 25px;
+          background-color: #202020;
+          border: none;
+          border-radius: 20px;
+          margin-right: 20px;
+          -webkit-transition: background-color 1s justify-content 1s !important;
+          transition: background-color 1s justify-content 1s !important;
+          -webkit-transition-delay: 0.2s;
+                  transition-delay: 0.2s; }
+          #header .main-nav .top-section .right-side #toggleButton:before {
             content: url("../../images/icons/moon-icon.svg");
             position: relative;
             display: block;
-            width: 25px;
-            height: 25px; }
-          #header .main-nav .top-section .right-side #toggleButton.daytime:before {
-            content: url("../../images/icons/sun-icon.svg");
-            position: relative;
-            display: block;
-            width: 25px;
-            height: 25px; }
+            width: 15px;
+            height: 15px;
+            top: 1px; }
     #header .main-nav .logo {
       margin-right: 20px;
       margin-bottom: 0; }
@@ -647,6 +653,21 @@ body.nighttime {
     transition: color 1s;
     -webkit-transition-delay: 0.2s;
             transition-delay: 0.2s; }
+  body.nighttime #toggleButton {
+    -webkit-box-pack: flex-end !important;
+    -ms-flex-pack: flex-end !important;
+    justify-content: flex-end !important;
+    background-color: #fff !important;
+    -webkit-transition: background-color 1s justify-content 1s !important;
+    transition: background-color 1s justify-content 1s !important;
+    -webkit-transition-delay: 0.2s;
+            transition-delay: 0.2s; }
+    body.nighttime #toggleButton:before {
+      content: url("../../images/icons/sun-icon.svg") !important;
+      position: relative;
+      display: block;
+      width: 15px;
+      height: 15px; }
   body.nighttime .inner-banner {
     background-color: #090b16; }
   body.nighttime .hero-background .cls-1,

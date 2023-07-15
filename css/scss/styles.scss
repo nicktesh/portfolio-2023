@@ -349,6 +349,19 @@ body {
         transition-delay: 0.2s;
       }
     }
+    #toggleButton {
+      @include justify-content(flex-end !important);
+      background-color: $color-white !important;
+      transition: background-color 1s justify-content 1s !important;
+      transition-delay: 0.2s;
+      &:before {
+        content: url("../../images/icons/sun-icon.svg") !important;
+        position: relative;
+        display: block;
+        width: 15px;
+        height: 15px;
+      }
+    }
     .inner-banner {
       background-color: $color-dark-blue;
     }
