@@ -37,6 +37,9 @@
           -webkit-box-pack: flex-start !important;
           -ms-flex-pack: flex-start !important;
           justify-content: flex-start !important;
+          -webkit-box-align: center !important;
+          -ms-flex-align: center !important;
+          align-items: center !important;
           width: 50px;
           height: 25px;
           background-color: #202020;
@@ -1236,5 +1239,72 @@ g,
     margin-bottom: 15px; }
     .module.row-about-me .content p:last-child {
       margin-bottom: 0; }
+
+.module.row-portfolio {
+  padding-top: 0; }
+  .module.row-portfolio .row {
+    margin-bottom: 30px;
+    padding: 0 15px; }
+    @media (max-width: 992px) {
+      .module.row-portfolio .row {
+        margin-bottom: 15px; } }
+    @media (max-width: 992px) {
+      .module.row-portfolio .row:first-child {
+        margin-bottom: 0; } }
+    .module.row-portfolio .row:last-child {
+      margin-bottom: 0; }
+  @media (max-width: 992px) {
+    .module.row-portfolio .col-lg-4 {
+      margin: 15px 0; } }
+  @media (max-width: 992px) {
+    .module.row-portfolio .col-4,
+    .module.row-portfolio .col-6,
+    .module.row-portfolio .col-8 {
+      -webkit-box-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%; } }
+  .module.row-portfolio .content-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%;
+    background-color: grey; }
+    @media (max-width: 992px) {
+      .module.row-portfolio .content-wrapper {
+        margin-top: 15px; } }
+    .module.row-portfolio .content-wrapper .row {
+      margin-bottom: 0; }
+    .module.row-portfolio .content-wrapper .content-inner {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: flex-end;
+      -ms-flex-align: flex-end;
+      align-items: flex-end;
+      -webkit-box-orient: wrap;
+      -webkit-box-direction: wrap;
+      -ms-flex-flow: wrap;
+      flex-flow: wrap;
+      padding: 20px 20px 40px 40px; }
+      .module.row-portfolio .content-wrapper .content-inner .bottom-section {
+        background-color: grey; }
+    .module.row-portfolio .content-wrapper img {
+      max-width: 40px; }
+  .module.row-portfolio .background-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 400px; }
+    .module.row-portfolio .background-image.project-1 {
+      background-image: url(../../images/OG-image.jpg); }
+    .module.row-portfolio .background-image.project-2 {
+      background-image: url(../../images/OG-image.jpg); }
+    .module.row-portfolio .background-image.project-3 {
+      background-image: url(../../images/OG-image.jpg); }
+    .module.row-portfolio .background-image.project-4 {
+      background-image: url(../../images/OG-image.jpg); }
+    .module.row-portfolio .background-image.project-5 {
+      background-image: url(../../images/OG-image.jpg); }
 
 /*# sourceMappingURL=styles.css.map */

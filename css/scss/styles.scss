@@ -861,6 +861,7 @@ g,
     transition-delay: 0.2s;
   }
 }
+// Row About Me
 .module.row-about-me {
   .content {
     padding-top: 30px;
@@ -872,6 +873,82 @@ g,
       &:last-child {
         margin-bottom: 0;
       }
+    }
+  }
+}
+// Row Portfolio
+.module.row-portfolio {
+  padding-top: 0;
+  .row {
+    margin-bottom: 30px;
+    padding: 0 15px;
+    @include lg-screen-down() {
+      margin-bottom: 15px;
+    }
+    &:first-child {
+      @include lg-screen-down() {
+        margin-bottom: 0;
+      }
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .col-lg-4 {
+    @include lg-screen-down() {
+      margin: 15px 0;
+    }
+  }
+  .col-4,
+  .col-6,
+  .col-8 {
+    @include lg-screen-down() {
+      @include flex(0 0 100%);
+      max-width: 100%;
+    }
+  }
+  .content-wrapper {
+    @include flexbox();
+    height: 100%;
+    background-color: grey;
+    @include lg-screen-down() {
+      margin-top: 15px;
+    }
+    .row {
+      margin-bottom: 0;
+    }
+    .content-inner {
+      @include flexbox();
+      @include align-items(flex-end);
+      @include flex-flow(wrap);
+      padding: 20px 20px 40px 40px;
+      .bottom-section {
+        background-color: grey;
+      }
+    }
+    img {
+      max-width: 40px;
+    }
+  }
+  .background-image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 400px;
+    &.project-1 {
+      background-image: url(../../images/OG-image.jpg);
+    }
+    &.project-2 {
+      background-image: url(../../images/OG-image.jpg);
+    }
+    &.project-3 {
+      background-image: url(../../images/OG-image.jpg);
+    }
+    &.project-4 {
+      background-image: url(../../images/OG-image.jpg);
+    }
+    &.project-5 {
+      background-image: url(../../images/OG-image.jpg);
     }
   }
 }

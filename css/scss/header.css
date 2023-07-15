@@ -37,6 +37,9 @@
           -webkit-box-pack: flex-start !important;
           -ms-flex-pack: flex-start !important;
           justify-content: flex-start !important;
+          -webkit-box-align: center !important;
+          -ms-flex-align: center !important;
+          align-items: center !important;
           width: 50px;
           height: 25px;
           background-color: #202020;
