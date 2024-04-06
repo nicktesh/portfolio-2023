@@ -156,3 +156,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+// This script will auto-scroll the project header images
+document.addEventListener("DOMContentLoaded", function () {
+  const projectImageContainer = document.querySelector(".image-container");
+
+  if (projectImageContainer) {
+    // Function to start scrolling
+    function startAutoScroll() {
+      // Higher is slower
+      const speed = 15;
+
+      // Scrolls the container by 1 pixel every 'speed' milliseconds
+      const scrollInterval = setInterval(function () {
+        if (projectImageContainer.scrollTop < projectImageContainer.scrollHeight - projectImageContainer.clientHeight) {
+          projectImageContainer.scrollTop += 1; // Scroll down by 1 pixel
+        } else {
+          projectImageContainer.scrollTop = 0; // Reset to the top once the end is reached
+        }
+      }, speed);
+    }
+
+    startAutoScroll();
+  }
+});

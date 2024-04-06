@@ -1,8 +1,10 @@
 #header {
   position: relative;
   z-index: 20; }
-  #header.internal-page .main-nav .top-section {
-    margin-bottom: 0; }
+  #header.internal-page .main-nav {
+    padding-bottom: 10px; }
+    #header.internal-page .main-nav .top-section {
+      margin-bottom: 0; }
   #header .main-nav {
     background-color: transparent;
     padding: 20px 0; }
