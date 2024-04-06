@@ -27,18 +27,24 @@ $color-dark-grey: #202020;
 $color-success: #28a745;
 $color-danger: #dc3545;
 
+// Night Colors
+$color-night-dark: #08080f;
+$color-night-medium: #0e0e1a;
+$color-night-light: #1b1b31;
+$color-night-lighter: #38385f;
+
 // 2.0 - Heading and Text Variables
 // ------------------------------
 
 // Font Size
-$h1-size: 40px;
-$h2-size: 32px;
-$h3-size: 24px;
+$h1-size: 50px;
+$h2-size: 40px;
+$h3-size: 32px;
 $h4-size: 20px;
 $h5-size: 16px;
 $h6-size: 14px;
-$p-size: 16px;
-$a-size: 16px;
+$p-size: 18px;
+$a-size: 18px;
 $body-font-size: $p-size;
 
 // Mobile Font Sizes

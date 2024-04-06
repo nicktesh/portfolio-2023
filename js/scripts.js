@@ -94,8 +94,10 @@ function updateViewBox() {
   }
 }
 
-mediaQuery.addEventListener("change", updateViewBox);
-updateViewBox();
+if (svgElement) {
+  mediaQuery.addEventListener("change", updateViewBox);
+  updateViewBox();
+}
 
 // Parallax hero background effect
 const scrollEl = document.documentElement;
@@ -119,3 +121,38 @@ function animation() {
 
 // start animation on next animation frame
 window.requestAnimationFrame(animation);
+
+// Function to update the copyright year dynamically
+function updateCopyrightYear() {
+  const year = new Date().getFullYear();
+  const copyrightElement = document.getElementById("copyright");
+
+  // Ensure the element exists before attempting to update its content
+  if (copyrightElement) {
+    copyrightElement.textContent = `© Nick Tesh ${year} - All Rights Reserved.`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCopyrightYear();
+});
+
+// Function to close the mobile menu and overlay
+function closeMobileMenu() {
+  // Combine all selectors into a single query for efficiency
+  document.querySelectorAll(".mobile-menu, .mob-overlay, .mobile-menu-toggle, body").forEach((el) => {
+    // Use classList.remove with multiple arguments to remove different classes based on the element
+    el.classList.remove(el.matches(".mobile-menu, .mob-overlay") ? "open" : el.matches(".mobile-menu-toggle") ? "close" : "scroll");
+  });
+}
+
+// Close Mobile Menu after clicking anchor link
+document.addEventListener("DOMContentLoaded", function () {
+  // Select all anchor tags
+  document.querySelectorAll(".mobile-menu ul li a").forEach((link) => {
+    link.addEventListener("click", function () {
+      // Call closeMobileMenu whenever a link is clicked
+      closeMobileMenu();
+    });
+  });
+});

@@ -4,6 +4,13 @@
 #header {
   position: relative;
   z-index: 20;
+  &.internal-page {
+    .main-nav {
+      .top-section {
+        margin-bottom: 0;
+      }
+    }
+  }
   // Top Section
   .main-nav {
     background-color: transparent;
@@ -43,10 +50,13 @@
             display: block;
             width: 15px;
             height: 15px;
-            top: 2px;
+            top: 0;
             left: 5px;
             transition: left 1s right 1s;
             transition-delay: 0.2s;
+            @include lg-screen-down {
+              top: 2px;
+            }
           }
         }
         .sr-only {
@@ -74,6 +84,29 @@
         li {
           display: inline-block;
           a {
+            color: $color-dark-grey;
+            font-size: $a-size;
+            font-weight: 400;
+            font-family: $font-secondary;
+            text-transform: titlecase;
+            text-decoration: none;
+            transition: color 1s;
+            transition-delay: 0.2s;
+            &:hover,
+            &:active,
+            &:focus {
+              color: $color-primary;
+              text-decoration: underline;
+              text-underline-offset: 5px;
+              text-decoration-thickness: 2px;
+            }
+          }
+          button {
+            border: none;
+            background-color: transparent;
+            background: transparent;
+            outline: none;
+            padding: 0;
             color: $color-dark-grey;
             font-size: $a-size;
             font-weight: 400;
@@ -176,6 +209,47 @@
       padding: 0;
       li {
         list-style: none;
+        a {
+          color: $color-dark-grey;
+          font-size: $a-size;
+          font-weight: 400;
+          font-family: $font-secondary;
+          text-transform: titlecase;
+          text-decoration: none;
+          transition: color 1s;
+          transition-delay: 0.2s;
+          &:hover,
+          &:active,
+          &:focus {
+            color: $color-primary;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            text-decoration-thickness: 2px;
+          }
+        }
+        button {
+          border: none;
+          background-color: transparent;
+          background: transparent;
+          outline: none;
+          padding: 0;
+          color: $color-dark-grey;
+          font-size: $a-size;
+          font-weight: 400;
+          font-family: $font-secondary;
+          text-transform: titlecase;
+          text-decoration: none;
+          transition: color 1s;
+          transition-delay: 0.2s;
+          &:hover,
+          &:active,
+          &:focus {
+            color: $color-primary;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            text-decoration-thickness: 2px;
+          }
+        }
       }
     }
   }
@@ -203,6 +277,8 @@
     }
     &.close {
       opacity: 1;
+      position: fixed;
+      right: 15px;
       filter: none;
       &:before {
         content: url("../../images/icons/close-icon.svg");

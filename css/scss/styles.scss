@@ -132,6 +132,9 @@ img {
     }
   }
 }
+.bg-neutral {
+  background-color: $color-neutral;
+}
 .container-fluid {
   padding: 0;
 }
@@ -186,13 +189,14 @@ img {
 }
 // Primary Button
 .primary-btn {
-  @include flexbox();
-  @include justify-content(right);
-  background-color: $color-dark-grey;
+  display: flex;
+  justify-content: center;
+  background-color: $color-primary;
   color: $color-white;
-  border: 2px solid $color-black;
-  padding: 18px 18px 5px 5px;
-  width: 235px;
+  border: 2px solid $color-primary;
+  border-radius: 10px;
+  width: fit-content;
+  padding: 8px 20px;
   font-family: $font-secondary;
   font-weight: 500;
   text-transform: uppercase;
@@ -202,8 +206,9 @@ img {
   &:hover,
   &:active,
   &:focus {
-    background-color: $color-primary;
-    color: $color-white;
+    background-color: transparent;
+    border: 2px solid $color-primary;
+    color: $color-primary;
   }
 }
 // Animations
@@ -282,7 +287,7 @@ img {
 @keyframes ufozigzag {
   0% {
     opacity: 0;
-    transform: translateX(0) rotate(-180deg);
+    transform: translateX(0) rotate(0deg);
   }
   25% {
     opacity: 1;
@@ -298,7 +303,7 @@ img {
   }
   100% {
     opacity: 0;
-    transform: translateX(2000px) translateY(-100px) rotate(-100deg);
+    transform: translateX(3000px) translateY(-100px) rotate(0deg);
   }
 }
 @include xl-screen-down {
@@ -342,8 +347,19 @@ body {
       transition: color 1s, text-shadow 1s;
       transition-delay: 0.2s;
     }
+    .internal-page-banner {
+      background-color: $color-night-light;
+      transition: background-color 1s;
+      transition-delay: 0.2s;
+      h1 {
+        color: $color-white;
+        transition: color 1s;
+        transition-delay: 0.2s;
+      }
+    }
     .nav-links {
-      a {
+      a,
+      button {
         color: $color-white !important;
         transition: color 1s;
         transition-delay: 0.2s;
@@ -459,12 +475,11 @@ body {
       animation-iteration-count: 1;
     }
     .body-content {
-      overflow-x: clip;
-      background-color: $color-black;
-      background-image: url(../../images/paper_800px_dark.png);
+      background-color: $color-night-dark;
       background-repeat: repeat;
-      transition: background-color 1s, background-image 1s;
+      transition: background-color 1s;
       transition-delay: 0.2s;
+      h2,
       h3,
       p {
         color: $color-white;
@@ -472,11 +487,46 @@ body {
         transition-delay: 0.2s;
       }
     }
+    .primary-btn {
+      background-color: $color-night-lighter;
+      border: 1px solid $color-night-lighter;
+      color: $color-white;
+      transition: background-color 1s border 1s color 1s;
+      transition-delay: 0.2s;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: transparent;
+        border: 1px solid $color-white;
+        color: $color-white;
+      }
+    }
     .module.row-about-me {
       .content {
         border-top: 4px solid $color-white;
         transition: border-top 1s;
         transition-delay: 0.2s;
+      }
+    }
+    .module.bg-neutral {
+      background-color: $color-night-medium;
+      transition: background-color 1s;
+      transition-delay: 0.2s;
+    }
+    .row-portfolio {
+      .card-wrapper {
+        background-color: $color-night-light;
+        transition: background-color 1s box-shadow;
+        transition-delay: 0.2s;
+        .content-wrapper {
+          .content-tags {
+            span {
+              color: $color-white;
+              transition: color 1s;
+              transition-delay: 0.2s;
+            }
+          }
+        }
       }
     }
     #footer {
@@ -833,8 +883,11 @@ body {
     z-index: 18;
     transition: display 1s;
     transition-delay: 0.2s;
-    #ufo-svg {
-      width: 20px;
+    img {
+      width: 100px;
+      @include lg-screen-down {
+        width: 50px;
+      }
     }
   }
 }
@@ -849,11 +902,8 @@ g,
 }
 // Home Page
 .body-content {
-  overflow-x: clip;
   background-color: rgb(245, 247, 247);
-  background-image: url(../../images/paper_800px.png);
-  background-repeat: repeat;
-  transition: background-color 1s, background-image 1s;
+  transition: background-color 1s;
   transition-delay: 0.2s;
   h3,
   p {
@@ -861,8 +911,15 @@ g,
     transition-delay: 0.2s;
   }
 }
+// Internal Page Banner
+.internal-page-banner {
+  background-color: $color-tertiary;
+  h1 {
+    margin-bottom: 0;
+  }
+}
 // Row About Me
-.module.row-about-me {
+.row-about-me {
   .content {
     padding-top: 30px;
     border-top: 4px solid $color-dark-grey;
@@ -877,111 +934,55 @@ g,
   }
 }
 // Row Portfolio
-.module.row-portfolio {
-  padding-top: 0;
-  .row {
+.row-portfolio {
+  .content {
     margin-bottom: 30px;
-    padding: 0 15px;
-    @include lg-screen-down() {
-      margin-bottom: 15px;
-      padding: 0;
-    }
-    &:first-child {
-      @include lg-screen-down() {
-        margin-bottom: 0;
-      }
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
   }
-  .col-lg-4 {
-    @include lg-screen-down() {
-      margin: 15px 0;
-    }
-  }
-  .col-4,
-  .col-6,
-  .col-8 {
-    @include lg-screen-down() {
-      @include flex(0 0 100%);
-      max-width: 100%;
-    }
-  }
-  a {
+  .card-wrapper {
+    background-color: $color-white;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
     &:hover,
     &:active,
     &:focus {
-      .content-wrapper {
-        background-color: $color-secondary;
-        border: 1px solid $color-secondary;
-        transition: background-color 0.2s, border 0.2s;
-      }
-      .content-inner {
-        .bottom-section {
-          background-color: $color-secondary;
-          transition: background-color 0.2s;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    .image-wrapper {
+      figure {
+        margin-bottom: 0;
+        img {
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
         }
       }
     }
-  }
-  .content-wrapper {
-    @include flexbox();
-    height: 100%;
-    background-color: $color-white;
-    border: 1px solid $color-dark-grey;
-    overflow: hidden;
-    @include lg-screen-down() {
-      margin-top: 15px;
+    .content-wrapper {
+      padding: 40px;
+      .content-tags {
+        span {
+          color: $color-primary;
+          font-weight: 700;
+          font-style: italic;
+          font-size: 12px;
+        }
+      }
     }
-    .row {
+    .primary-btn {
+      margin: 25px 0;
+    }
+  }
+}
+// Row Project Header
+.row-project-header {
+  padding-bottom: 0;
+}
+// Row Project Overview
+.row-project-overview {
+  .row {
+    margin-bottom: 50px;
+    &:last-child {
       margin-bottom: 0;
-      @include lg-screen-down() {
-        padding: 0 15px;
-      }
-    }
-    .content-inner {
-      @include flexbox();
-      @include align-items(flex-end);
-      @include flex-flow(wrap);
-      padding: 20px 20px 40px 40px;
-      width: 100%;
-      .bottom-section {
-        background-color: $color-white;
-        width: 100%;
-      }
-    }
-    img {
-      max-width: 40px;
-    }
-  }
-  .col-lg-4 {
-    .content-inner {
-      padding: 0;
-      .bottom-section {
-        padding: 20px 20px 40px 40px;
-      }
-    }
-  }
-  .background-image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 400px;
-    &.project-1 {
-      background-image: url(../../images/OG-image.jpg);
-    }
-    &.project-2 {
-      background-image: url(../../images/OG-image.jpg);
-    }
-    &.project-3 {
-      background-image: url(../../images/OG-image.jpg);
-    }
-    &.project-4 {
-      background-image: url(../../images/OG-image.jpg);
-    }
-    &.project-5 {
-      background-image: url(../../images/OG-image.jpg);
     }
   }
 }
