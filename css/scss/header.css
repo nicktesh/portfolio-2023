@@ -43,6 +43,7 @@
           -ms-flex-align: center !important;
           align-items: center !important;
           width: 50px;
+          min-width: 50px;
           height: 25px;
           background-color: #202020;
           border: none;
@@ -259,5 +260,8 @@
   .mob-overlay.open {
     opacity: 1;
     pointer-events: auto; }
+
+body.scroll #toggleButton {
+  margin-right: 50px !important; }
 
 /*# sourceMappingURL=header.css.map */

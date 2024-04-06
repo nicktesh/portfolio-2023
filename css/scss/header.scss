@@ -37,6 +37,7 @@
           @include justify-content(flex-start !important);
           @include align-items(center !important);
           width: 50px;
+          min-width: 50px;
           height: 25px;
           background-color: $color-dark-grey;
           border: none;
@@ -303,5 +304,11 @@
   &.open {
     opacity: 1;
     pointer-events: auto;
+  }
+}
+// Toggle Button Fix
+body.scroll {
+  #toggleButton {
+    margin-right: 50px !important;
   }
 }
