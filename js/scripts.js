@@ -180,3 +180,79 @@ document.addEventListener("DOMContentLoaded", function () {
     startAutoScroll();
   }
 });
+
+// Highcharts - Technology Chart
+Highcharts.chart("technologyChart", {
+  chart: {
+    type: "bar",
+    backgroundColor: "transparent",
+  },
+  title: {
+    text: "Technology Proficiency Levels",
+    style: {
+      color: "#0b192b",
+    },
+  },
+  xAxis: {
+    categories: ["PHP", "React", "JavaScript", "jQuery", "HTML/CSS", "SCSS", "Bootstrap", "Git", "GitHub", "Flexbox", "AWS", "MySQL", "MongoDB", "Node.js", "Puppeteer", "Chart.js", "Highcharts", "Figma", "Adobe Suite", "ADA Standards", "WCAG 2.2", "WAVE Testing", "AxeDev Testing", "SEO"],
+    labels: {
+      style: {
+        color: "#0b192b",
+      },
+    },
+  },
+  yAxis: {
+    title: {
+      text: "Proficiency Level (1-10)",
+      style: {
+        color: "#0b192b",
+      },
+    },
+    labels: {
+      style: {
+        color: "#0b192b",
+      },
+    },
+    max: 10,
+    tickInterval: 1,
+  },
+  series: [
+    {
+      name: "Proficiency Level",
+      data: [9, 8, 9, 8, 8, 10, 9, 8, 9, 9, 8, 7, 8, 8, 8, 7, 7, 9, 9, 8, 8, 8, 8, 8],
+      color: "#ef6262",
+    },
+  ],
+  credits: {
+    enabled: false,
+  },
+  legend: {
+    enabled: false,
+  },
+  plotOptions: {
+    series: {
+      pointWidth: 30,
+      events: {
+        legendItemClick: function () {
+          return false;
+        },
+      },
+    },
+  },
+  responsive: {
+    rules: [
+      {
+        condition: {
+          maxWidth: 992,
+        },
+        chartOptions: {
+          plotOptions: {
+            series: {
+              pointWidth: 15,
+            },
+          },
+        },
+      },
+    ],
+  },
+});

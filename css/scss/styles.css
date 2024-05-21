@@ -1027,12 +1027,12 @@ body.nighttime {
         .inner-banner .ufo-wrapper img {
           width: 50px; } }
 
-g,
+.hero-background g,
 .hero-content h1,
 .hero-content-lower h2 {
   transform: translateY(calc(var(--scrollPos, 0) * var(--offset, 0))); }
   @media (prefers-reduced-motion: reduce) {
-    g,
+    .hero-background g,
     .hero-content h1,
     .hero-content-lower h2 {
       transform: translateY(0); } }
@@ -1156,5 +1156,15 @@ g,
     line-height: normal; }
     .row-project-overview ul li:last-child {
       margin-right: 0; }
+
+.chart-wrapper {
+  margin-top: 40px; }
+  .chart-wrapper #technologyChart {
+    width: 100%;
+    height: 900px;
+    overflow: hidden; }
+    @media (max-width: 992px) {
+      .chart-wrapper #technologyChart {
+        height: 600px; } }
 
 /*# sourceMappingURL=styles.css.map */

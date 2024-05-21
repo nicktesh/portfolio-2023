@@ -892,7 +892,7 @@ body {
   }
 }
 // Parallax Scroll Effect
-g,
+.hero-background g,
 .hero-content h1,
 .hero-content-lower h2 {
   transform: translateY(calc(var(--scrollPos, 0) * var(--offset, 0)));
@@ -1064,6 +1064,18 @@ g,
       &:last-child {
         margin-right: 0;
       }
+    }
+  }
+}
+// Technology Chart
+.chart-wrapper {
+  margin-top: 40px;
+  #technologyChart {
+    width: 100%;
+    height: 900px;
+    overflow: hidden;
+    @include lg-screen-down {
+      height: 600px;
     }
   }
 }
