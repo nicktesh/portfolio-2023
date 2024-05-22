@@ -338,3 +338,95 @@ const chartData = [
 chartData.forEach(({ container, title, categories, data }) => {
   createChart(container, title, categories, data);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("projects.json")
+    .then((response) => response.json())
+    .then((data) => {
+      const projectsContainer = document.getElementById("projects-container");
+      const modalContainer = document.getElementById("modal-container");
+
+      data.forEach((project) => {
+        // Create project card
+        const card = document.createElement("div");
+        card.classList.add("col-lg-4");
+        card.innerHTML = `
+          <div class="card-wrapper">
+            <div class="image-wrapper">
+              <figure>
+                <img src="${project.image}" alt="${project.title}" />
+              </figure>
+            </div>
+            <div class="content-wrapper">
+              <h3>${project.title}</h3>
+              <p>${project.description}</p>
+              <button class="primary-btn" data-project-id="${project.id}">VIEW ${project.title.toUpperCase()} PROJECT</button>
+              <div class="content-tags">
+                ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
+              </div>
+            </div>
+          </div>
+        `;
+        projectsContainer.appendChild(card);
+
+        // Create project modal
+        const dialog = document.createElement("dialog");
+        dialog.classList.add("dialog");
+        dialog.setAttribute("id", `${project.id}-modal`);
+        dialog.innerHTML = `
+          <div class="dialog-content">
+            <button class="close" data-project-id="${project.id}">&times;</button>
+            <div class="scroll-indicator"></div>
+            <h2>${project.title}</h2>
+            <p>${project.overview}</p>
+            ${project.roleText ? `<h3>My Role</h3><p>${project.roleText}</p><ul>${project.roles.map((role) => `<li>${role}</li>`).join("")}</ul>` : ""}
+            <h3>Technologies Used</h3>
+            <ul>${project.technologies.map((tech) => `<li>${tech}</li>`).join("")}</ul>
+            ${project.highlights.length ? `<h3>Project Highlights</h3><ul>${project.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}</ul>` : ""}
+            ${
+              project.screenshots.length
+                ? `<h3>Screenshots from Live Site</h3>${project.screenshots
+                    .map(
+                      (screenshot) => `
+              <div class="img-wrapper">
+                <h4>${screenshot.title}</h4>
+                <img src="${screenshot.src}" alt="${screenshot.title}" width="800"/>
+              </div>`
+                    )
+                    .join("")}`
+                : ""
+            }
+            ${project.link ? `<a href="${project.link}" class="primary-btn" target="_blank">VIEW PROJECT ON GITHUB</a>` : ""}
+            ${project.liveSite ? `<p><strong>${project.liveSiteText}</strong></p><a href="${project.liveSite}" class="primary-btn" target="_blank">VIEW LIVE SITE</a>` : ""}
+          </div>
+        `;
+        modalContainer.appendChild(dialog);
+      });
+
+      // Event listeners for opening modals
+      document.querySelectorAll(".primary-btn").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const projectId = event.currentTarget.getAttribute("data-project-id");
+          const modal = document.getElementById(`${projectId}-modal`);
+          modal.showModal();
+        });
+      });
+
+      // Event listeners for closing modals
+      document.querySelectorAll(".close").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const projectId = event.currentTarget.getAttribute("data-project-id");
+          const modal = document.getElementById(`${projectId}-modal`);
+          modal.close();
+        });
+      });
+
+      // Close modal when clicking outside of the modal content
+      document.addEventListener("click", (event) => {
+        if (event.target.tagName === "DIALOG") {
+          event.target.close();
+        }
+      });
+    })
+    .catch((error) => console.error("Error fetching project data:", error));
+});

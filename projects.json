@@ -1,0 +1,51 @@
+[
+  {
+    "id": "justgpts",
+    "title": "JustGPTs",
+    "description": "JustGPTs is a directory website for custom ChatGPT models.",
+    "image": "images/justgpts_img.jpg",
+    "link": null,
+    "liveSiteText": "Visit Live Site:",
+    "liveSite": "https://justgpts.com/",
+    "tags": ["PERSONAL PROJECT"],
+    "overview": "JustGPTs is a directory website for custom ChatGPT models. I built JustGPTs as a place where people could find and share their own custom ChatGPT models. During this time, the official ChatGPT store was not yet active, so it made it very difficult to find user-created GPTs. It was really fun to set up and became quite popular for some time before the release of the official ChatGPT Store.",
+    "roleText": "",
+    "roles": [],
+    "technologies": ["PHP", "MySQL", "JavaScript", "jQuery", "AJAX", "SCSS", "Bootstrap"],
+    "highlights": [],
+    "screenshots": []
+  },
+  {
+    "id": "dollartree",
+    "title": "Dollar Tree Inc.",
+    "description": "The official website for Dollar Tree Corporate.",
+    "image": "images/dollartree_img.jpg",
+    "link": null,
+    "liveSiteText": "While I don't own the code or the site, you can visit the live Dollar Tree Inc. site to see the final product:",
+    "liveSite": "https://corporate.dollartree.com/",
+    "tags": ["CORPORATE PROJECT"],
+    "overview": "I contributed to the development of the Dollar Tree Corporate site, working as part of a team to deliver a high-quality, user-friendly, and accessible web experience. This project involved collaboration with designers, developers, and stakeholders to ensure the site met all requirements and provided an excellent user experience.",
+    "roleText": "As a Front-End Web Developer, my responsibilities included:",
+    "roles": ["Collaborating with designers and project managers to implement responsive and accessible web pages.", "Writing clean, maintainable code using HTML, SCSS, JavaScript, jQuery, and PHP.", "Ensuring cross-browser compatibility and optimizing web pages for performance.", "Participating in code reviews and providing feedback to improve code quality.", "Troubleshooting and resolving bugs and issues in a timely manner."],
+    "technologies": ["HTML", "SCSS", "JavaScript", "jQuery", "PHP", "ChartJS", "Bootstrap", "Git", "WAVE", "Axe DevTools"],
+    "highlights": ["Implemented a responsive design that adapts seamlessly to different devices and screen sizes.", "Built out an interactive SVG map highlighting region availabilities.", "Built out interactive charts using the ChartJS library.", "Enhanced site accessibility to ensure compliance with WCAG standards.", "Optimized site performance, resulting in faster load times and improved user experience."],
+    "screenshots": [
+      {
+        "title": "Interactive SVG Map",
+        "src": "https://raw.githubusercontent.com/nicktesh/image-hosting/main/dollar_tree_feature_1.png"
+      },
+      {
+        "title": "Interactive SVG Map",
+        "src": "https://raw.githubusercontent.com/nicktesh/image-hosting/main/dollar_tree_feature_2.png"
+      },
+      {
+        "title": "Interactive Charts",
+        "src": "https://raw.githubusercontent.com/nicktesh/image-hosting/main/dollar_tree_feature_3.png"
+      },
+      {
+        "title": "Full Investors Page",
+        "src": "https://raw.githubusercontent.com/nicktesh/image-hosting/main/dollar_tree_full.png"
+      }
+    ]
+  }
+]

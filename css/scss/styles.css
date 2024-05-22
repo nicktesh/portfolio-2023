@@ -1,3 +1,4 @@
+@charset "UTF-8";
 #header {
   position: relative;
   z-index: 20; }
@@ -1182,6 +1183,51 @@ body.nighttime {
       .row-contact .social-links ul li img {
         max-width: 20px;
         margin-right: 10px; }
+
+.dialog {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  overflow-y: auto;
+  max-height: 80vh; }
+  .dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6); }
+  .dialog .close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer; }
+    .dialog .close:hover, .dialog .close:active, .dialog .close:focus {
+      color: #000;
+      text-decoration: none; }
+  .dialog .dialog-content {
+    padding: 20px; }
+    .dialog .dialog-content .img-wrapper {
+      margin-bottom: 40px; }
+      .dialog .dialog-content .img-wrapper img {
+        width: 800px;
+        max-width: 100%;
+        border: 1px solid #000; }
+      .dialog .dialog-content .img-wrapper h4 {
+        margin-bottom: 40px; }
+    .dialog .dialog-content a {
+      margin: 20px 0 40px 0; }
+  .dialog .scroll-indicator {
+    font-size: 14px;
+    color: #202020;
+    margin-bottom: 20px; }
+    .dialog .scroll-indicator:before {
+      content: "↓ Scroll down to see full project details ↓";
+      display: block; }
 
 .row-project-header {
   padding-bottom: 0; }
