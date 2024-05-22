@@ -287,7 +287,7 @@ body {
   letter-spacing: normal;
   position: relative;
   background-color: #fff;
-  color: #333;
+  color: #202020;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -327,7 +327,7 @@ h2 {
       font-size: 26px; } }
 
 h3 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   color: #202020; }
   @media (max-width: 768px) {
@@ -364,7 +364,7 @@ p {
   font-size: 18px;
   font-weight: 400;
   font-family: "Cabin", sans-serif;
-  color: #333; }
+  color: #202020; }
   @media (max-width: 768px) {
     p {
       font-size: 16px; } }
@@ -422,6 +422,33 @@ img {
 
 .p-0 {
   padding: 0; }
+
+.skip-link-wrapper .skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  background: #fff;
+  color: #000;
+  text-align: left; }
+  .skip-link-wrapper .skip-link:hover, .skip-link-wrapper .skip-link:active, .skip-link-wrapper .skip-link:focus, .skip-link-wrapper .skip-link:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 8px 16px;
+    overflow: visible;
+    clip: auto;
+    border: 1px solid #000;
+    background: #fff;
+    color: #000;
+    z-index: 1000; }
 
 .block-link {
   font-size: 18px;
@@ -682,9 +709,9 @@ body.nighttime {
       background-color: transparent;
       border: 1px solid #fff;
       color: #fff; }
-  body.nighttime .module.row-about-me .content {
-    border-top: 4px solid #fff;
-    transition: border-top 1s;
+  body.nighttime .module.row-about-me .content .color-segment.color1 {
+    background-color: #fff;
+    transition: background-color 1s;
     transition-delay: 0.2s; }
   body.nighttime .module.bg-neutral {
     background-color: #0e0e1a;
@@ -698,6 +725,14 @@ body.nighttime {
       color: #fff;
       transition: color 1s;
       transition-delay: 0.2s; }
+  body.nighttime .row-charts .highcharts-title {
+    fill: #fff !important; }
+  body.nighttime .row-charts .highcharts-axis-labels text {
+    fill: #fff !important; }
+  body.nighttime #contact .social-links img {
+    filter: invert(100%); }
+  body.nighttime #contact .social-links a {
+    color: #fff; }
   body.nighttime #footer {
     background-color: #090b16;
     transition: background-color 1s;
@@ -1052,14 +1087,46 @@ body.nighttime {
     margin-bottom: 0; }
 
 .row-about-me .content {
-  padding-top: 30px;
-  border-top: 4px solid #202020;
   transition: border-top 1s;
   transition-delay: 0.2s; }
   .row-about-me .content p {
     margin-bottom: 15px; }
     .row-about-me .content p:last-child {
       margin-bottom: 0; }
+  .row-about-me .content .multi-colored-bar {
+    display: flex;
+    height: 4px;
+    width: 100%;
+    margin-bottom: 20px; }
+    .row-about-me .content .multi-colored-bar .color-segment {
+      height: 100%; }
+      .row-about-me .content .multi-colored-bar .color-segment.color1 {
+        background-color: #0b192b;
+        width: 5%; }
+      .row-about-me .content .multi-colored-bar .color-segment.color2 {
+        background-color: #ef6262;
+        width: 10%; }
+      .row-about-me .content .multi-colored-bar .color-segment.color3 {
+        background-color: #f3aa60;
+        width: 20%; }
+      .row-about-me .content .multi-colored-bar .color-segment.color4 {
+        background-color: #98c1d9;
+        width: 25%; }
+      .row-about-me .content .multi-colored-bar .color-segment.color5 {
+        background-color: #5e81ac;
+        width: 40%; }
+
+.row-charts .chart-header {
+  margin-bottom: 20px; }
+  .row-charts .chart-header h2 {
+    text-transform: uppercase;
+    margin-bottom: 10px; }
+.row-charts .highcharts-title {
+  font-size: 20px !important;
+  font-family: "Kanit", sans-serif;
+  text-transform: uppercase; }
+.row-charts .col-md-6 {
+  margin: 20px 0; }
 
 .row-portfolio .content {
   margin-bottom: 30px; }
@@ -1156,15 +1223,5 @@ body.nighttime {
     line-height: normal; }
     .row-project-overview ul li:last-child {
       margin-right: 0; }
-
-.chart-wrapper {
-  margin-top: 40px; }
-  .chart-wrapper #technologyChart {
-    width: 100%;
-    height: 900px;
-    overflow: hidden; }
-    @media (max-width: 992px) {
-      .chart-wrapper #technologyChart {
-        height: 600px; } }
 
 /*# sourceMappingURL=styles.css.map */

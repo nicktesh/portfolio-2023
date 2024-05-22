@@ -1,24 +1,10 @@
-//Sub-menu height fix
-$(document).ready(function () {
-  // Check window width
-  if ($(window).width() > 1200) {
-    // Get all elements with class .sub-menu
-    let subMenus = $(".sub-menu");
-
-    // Loop through each .sub-menu element and check its height
-    subMenus.each(function () {
-      // get height of the element
-      let height = $(this).height();
-      if (height > 500) {
-        // if height is greater than 500px
-        $(this).css("max-height", "500px");
-        $(this).css("overflow-y", "scroll");
-        $(this).css("overflow-x", "hidden");
-      }
-    });
-  }
-});
-// Mobile Menu
+/**
+ * Mobile Menu Toggle
+ *
+ * Toggles the mobile menu, overlay, and body scroll on click of the menu toggle button.
+ * Ensures the menu and overlay open/close smoothly and prevents body scroll when the menu is open.
+ *
+ */
 if (document.querySelector(".mobile-menu")) {
   const menu = document.querySelector(".mobile-menu");
   const menuToggleButton = document.querySelector(".mobile-menu-toggle");
@@ -32,10 +18,17 @@ if (document.querySelector(".mobile-menu")) {
     body.classList.toggle("scroll");
   });
 }
-// Home Page Banner
+
+/**
+ * Home Page Banner - Day/Night Mode Toggle
+ *
+ * Toggles between day and night modes based on the button click and saves the mode in local storage.
+ * Automatically sets the initial mode based on the saved preference in local storage.
+ *
+ */
 const toggleButton = document.getElementById("toggleButton");
 const body = document.body;
-const currentMode = localStorage.getItem("mode");
+let currentMode = localStorage.getItem("mode");
 
 // Checks local storage for time of day
 if (currentMode === "nighttime") {
@@ -52,6 +45,7 @@ if (currentMode === "nighttime") {
 // On click of time of day button, switch between day or night
 toggleButton.addEventListener("click", () => {
   body.classList.toggle("nighttime");
+  currentMode = localStorage.getItem("mode");
 
   if (currentMode === "nighttime") {
     localStorage.setItem("mode", "daytime");
@@ -59,30 +53,37 @@ toggleButton.addEventListener("click", () => {
     localStorage.setItem("mode", "nighttime");
   }
 
-  if (toggleButton.classList.contains("nighttime")) {
-    toggleButton.classList.add("daytime");
-    toggleButton.classList.remove("nighttime");
-  } else {
-    toggleButton.classList.add("nighttime");
-    toggleButton.classList.remove("daytime");
-  }
+  toggleButton.classList.toggle("daytime");
+  toggleButton.classList.toggle("nighttime");
 });
 
-// Random Value Function for Animations
-function applyRandomValueToElements(selector, className) {
+/**
+ * Function to apply random values to elements for animations
+ *
+ * Applies a random value to a CSS variable for each selected element.
+ * This random value can be used to create dynamic animations in CSS.
+ *
+ */
+function applyRandomValueToElements(selector) {
   const elements = document.querySelectorAll(selector);
   elements.forEach((element) => {
     element.style.setProperty("--random-value", Math.random());
   });
 }
 
-// Assets in main hero background
+// Apply random values to specific elements
 applyRandomValueToElements("#trees-left .cls-4");
 applyRandomValueToElements("#trees-right .cls-4");
 applyRandomValueToElements("#trees-3 .cls-7");
 applyRandomValueToElements("#stars .cls-11");
 
-// Update hero background view box
+/**
+ * Update hero background viewBox based on screen width
+ *
+ * Updates the viewBox attribute of an SVG element to ensure it looks good on different screen widths.
+ * Uses a media query to determine the appropriate viewBox values.
+ *
+ */
 const mediaQuery = window.matchMedia("(max-width: 768px)");
 const svgElement = document.getElementById("mountains-bg");
 
@@ -99,37 +100,49 @@ if (svgElement) {
   updateViewBox();
 }
 
-// Parallax hero background effect
+/**
+ * Parallax hero background effect
+ *
+ * Creates a parallax scrolling effect by updating a CSS variable with the scroll position.
+ * This variable can be used in CSS to create a parallax effect on the hero background.
+ *
+ */
 const scrollEl = document.documentElement;
 const root = document.documentElement;
 
 let scrollPos;
 
-// update css property on scroll
+// Update css property on scroll
 function animation() {
-  // check the scroll position has changed
+  // Check the scroll position has changed
   if (scrollPos !== scrollEl.scrollTop) {
-    // reset the seen scroll position
+    // Reset the seen scroll position
     scrollPos = scrollEl.scrollTop;
-    // update css property --scrollPos with scroll position in pixels
+    // Update css property --scrollPos with scroll position in pixels
     root.style.setProperty("--scrollPos", scrollPos + "px");
   }
 
-  // call animation again on next animation frame
+  // Call animation again on next animation frame
   window.requestAnimationFrame(animation);
 }
 
-// start animation on next animation frame
+// Start animation on next animation frame
 window.requestAnimationFrame(animation);
 
-// Function to update the copyright year dynamically
+/**
+ * Function to update the copyright year dynamically
+ *
+ * Updates the text content of the copyright element with the current year.
+ * Ensures the displayed year is always up-to-date.
+ *
+ */
 function updateCopyrightYear() {
   const year = new Date().getFullYear();
   const copyrightElement = document.getElementById("copyright");
 
   // Ensure the element exists before attempting to update its content
   if (copyrightElement) {
-    copyrightElement.textContent = `© Nick Tesh ${year} - All Rights Reserved.`;
+    copyrightElement.textContent = `© ${year} Nick Tesh - All Rights Reserved.`;
   }
 }
 
@@ -137,122 +150,191 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCopyrightYear();
 });
 
-// Function to close the mobile menu and overlay
+/**
+ * Function to close the mobile menu and overlay
+ *
+ * Closes the mobile menu and overlay, and enables body scrolling.
+ * Removes the appropriate classes from the relevant elements.
+ *
+ */
 function closeMobileMenu() {
-  // Combine all selectors into a single query for efficiency
   document.querySelectorAll(".mobile-menu, .mob-overlay, .mobile-menu-toggle, body").forEach((el) => {
-    // Use classList.remove with multiple arguments to remove different classes based on the element
     el.classList.remove(el.matches(".mobile-menu, .mob-overlay") ? "open" : el.matches(".mobile-menu-toggle") ? "close" : "scroll");
   });
 }
 
 // Close Mobile Menu after clicking anchor link
 document.addEventListener("DOMContentLoaded", function () {
-  // Select all anchor tags
   document.querySelectorAll(".mobile-menu ul li a").forEach((link) => {
-    link.addEventListener("click", function () {
-      // Call closeMobileMenu whenever a link is clicked
-      closeMobileMenu();
+    link.addEventListener("click", closeMobileMenu);
+  });
+});
+
+/**
+ * This script adds smooth scrolling behavior to anchor links on the portfolio page.
+ * When an anchor link is clicked, the page will smoothly scroll to the corresponding section.
+ *
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll('a[href*="#"]');
+
+  links.forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const targetId = this.getAttribute("href").split("#")[1];
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop,
+          behavior: "smooth",
+        });
+
+        // Update the URL hash without jumping to the section
+        history.pushState(null, null, `#${targetId}`);
+      }
     });
   });
 });
 
-// This script will auto-scroll the project header images
-document.addEventListener("DOMContentLoaded", function () {
-  const projectImageContainer = document.querySelector(".image-container");
+/**
+ * This script sets up a series of Highcharts polar column charts to display proficiency levels
+ * across various categories including Front-End, Back-End, Tools & Platforms, and Design & Accessibility.
+ *
+ * - `retroColors`: An array of hex color codes used to style the chart series.
+ * - `generateSeriesData`: A function to map proficiency data to the chart series, assigning colors from `retroColors`.
+ * - `sharedChartOptions`: A common set of chart options to ensure consistency across all charts.
+ * - `createChart`: A function to initialize a Highcharts chart with provided container, title, categories, and data.
+ * - `chartData`: An array of objects containing the configuration data for each chart (container, title, categories, data).
+ * - Initialization: Iterates over `chartData` to create each chart using the `createChart` function.
+ *
+ */
+const retroColors = ["#ef6262", "#f3ac74", "#e3c78a", "#98c1d9", "#5e81ac", "#d08770", "#a3be8c", "#b48ead"];
 
-  if (projectImageContainer) {
-    // Function to start scrolling
-    function startAutoScroll() {
-      // Higher is slower
-      const speed = 15;
+// Function to generate series data with colors
+const generateSeriesData = (data) => {
+  return data.map((value, index) => ({
+    y: value,
+    color: retroColors[index % retroColors.length],
+  }));
+};
 
-      // Scrolls the container by 1 pixel every 'speed' milliseconds
-      const scrollInterval = setInterval(function () {
-        if (projectImageContainer.scrollTop < projectImageContainer.scrollHeight - projectImageContainer.clientHeight) {
-          projectImageContainer.scrollTop += 1; // Scroll down by 1 pixel
-        } else {
-          projectImageContainer.scrollTop = 0; // Reset to the top once the end is reached
-        }
-      }, speed);
-    }
-
-    startAutoScroll();
-  }
-});
-
-// Highcharts - Technology Chart
-Highcharts.chart("technologyChart", {
+// Shared chart options
+const sharedChartOptions = {
   chart: {
-    type: "bar",
+    polar: true,
+    type: "column",
     backgroundColor: "transparent",
   },
-  title: {
-    text: "Technology Proficiency Levels",
-    style: {
-      color: "#0b192b",
-    },
-  },
-  xAxis: {
-    categories: ["PHP", "React", "JavaScript", "jQuery", "HTML/CSS", "SCSS", "Bootstrap", "Git", "GitHub", "Flexbox", "AWS", "MySQL", "MongoDB", "Node.js", "Puppeteer", "Chart.js", "Highcharts", "Figma", "Adobe Suite", "ADA Standards", "WCAG 2.2", "WAVE Testing", "AxeDev Testing", "SEO"],
-    labels: {
-      style: {
-        color: "#0b192b",
-      },
-    },
+  pane: {
+    size: "85%",
   },
   yAxis: {
-    title: {
-      text: "Proficiency Level (1-10)",
-      style: {
-        color: "#0b192b",
-      },
-    },
-    labels: {
-      style: {
-        color: "#0b192b",
-      },
-    },
+    min: 0,
     max: 10,
     tickInterval: 1,
-  },
-  series: [
-    {
-      name: "Proficiency Level",
-      data: [9, 8, 9, 8, 8, 10, 9, 8, 9, 9, 8, 7, 8, 8, 8, 7, 7, 9, 9, 8, 8, 8, 8, 8],
-      color: "#ef6262",
+    endOnTick: false,
+    showLastLabel: true,
+    labels: {
+      enabled: false,
     },
-  ],
+    gridLineInterpolation: "polygon",
+    title: {
+      text: null,
+    },
+  },
   credits: {
     enabled: false,
   },
   legend: {
     enabled: false,
   },
-  plotOptions: {
-    series: {
-      pointWidth: 30,
-      events: {
-        legendItemClick: function () {
-          return false;
-        },
-      },
-    },
-  },
   responsive: {
     rules: [
       {
         condition: {
-          maxWidth: 992,
+          maxWidth: 600,
         },
         chartOptions: {
-          plotOptions: {
-            series: {
-              pointWidth: 15,
+          pane: {
+            size: "70%",
+          },
+          xAxis: {
+            labels: {
+              style: {
+                fontSize: "10px",
+              },
             },
           },
         },
       },
     ],
   },
+};
+
+// Function to create chart
+const createChart = (container, title, categories, data) => {
+  Highcharts.chart(container, {
+    ...sharedChartOptions,
+    title: {
+      text: title,
+      style: {
+        color: "#202020",
+      },
+    },
+    xAxis: {
+      categories: categories,
+      labels: {
+        style: {
+          fontSize: "15px",
+          fontWeight: "700",
+          fontFamily: "Cabin, sans-serif",
+          color: "#202020",
+        },
+      },
+      tickmarkPlacement: "on",
+      lineWidth: 0,
+    },
+    series: [
+      {
+        name: "Proficiency Level",
+        data: generateSeriesData(data),
+        pointPlacement: "on",
+      },
+    ],
+  });
+};
+
+// Data for charts
+const chartData = [
+  {
+    container: "frontendChart",
+    title: "Front-End",
+    categories: ["HTML/CSS", "SCSS", "JavaScript", "React", "jQuery", "Bootstrap", "Chart.js", "Highcharts"],
+    data: [10, 10, 9, 7, 8, 10, 7, 7],
+  },
+  {
+    container: "backendChart",
+    title: "Back-End",
+    categories: ["PHP", "Node.js", "MySQL", "MongoDB", "Puppeteer"],
+    data: [9, 7, 8, 5, 8],
+  },
+  {
+    container: "toolsChart",
+    title: "Tools & Platforms",
+    categories: ["Git", "GitHub", "AWS", "Docker"],
+    data: [8, 9, 7, 5],
+  },
+  {
+    container: "designChart",
+    title: "Design & Accessibility",
+    categories: ["Figma", "Adobe Suite", "ADA Standards", "WCAG 2.2", "SEO"],
+    data: [10, 10, 9, 9, 8],
+  },
+];
+
+// Create all charts
+chartData.forEach(({ container, title, categories, data }) => {
+  createChart(container, title, categories, data);
 });

@@ -157,6 +157,40 @@ img {
 .p-0 {
   padding: 0;
 }
+// Skip Links
+.skip-link-wrapper {
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    background: #fff;
+    color: #000;
+    text-align: left;
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-visible {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 8px 16px;
+      overflow: visible;
+      clip: auto;
+      border: 1px solid #000;
+      background: #fff;
+      color: #000;
+      z-index: 1000;
+    }
+  }
+}
 // Block Link
 .block-link {
   font-size: 18px;
@@ -503,9 +537,11 @@ body {
     }
     .module.row-about-me {
       .content {
-        border-top: 4px solid $color-white;
-        transition: border-top 1s;
-        transition-delay: 0.2s;
+        .color-segment.color1 {
+          background-color: $color-white;
+          transition: background-color 1s;
+          transition-delay: 0.2s;
+        }
       }
     }
     .module.bg-neutral {
@@ -526,6 +562,26 @@ body {
               transition-delay: 0.2s;
             }
           }
+        }
+      }
+    }
+    .row-charts {
+      .highcharts-title {
+        fill: $color-white !important;
+      }
+      .highcharts-axis-labels {
+        text {
+          fill: $color-white !important;
+        }
+      }
+    }
+    #contact {
+      .social-links {
+        img {
+          filter: invert(100%);
+        }
+        a {
+          color: $color-white;
         }
       }
     }
@@ -921,8 +977,6 @@ body {
 // Row About Me
 .row-about-me {
   .content {
-    padding-top: 30px;
-    border-top: 4px solid $color-dark-grey;
     transition: border-top 1s;
     transition-delay: 0.2s;
     p {
@@ -931,6 +985,53 @@ body {
         margin-bottom: 0;
       }
     }
+    .multi-colored-bar {
+      display: flex;
+      height: 4px;
+      width: 100%;
+      margin-bottom: 20px;
+      .color-segment {
+        height: 100%;
+        &.color1 {
+          background-color: #0b192b;
+          width: 5%;
+        }
+        &.color2 {
+          background-color: #ef6262;
+          width: 10%;
+        }
+        &.color3 {
+          background-color: #f3aa60;
+          width: 20%;
+        }
+        &.color4 {
+          background-color: #98c1d9;
+          width: 25%;
+        }
+        &.color5 {
+          background-color: #5e81ac;
+          width: 40%;
+        }
+      }
+    }
+  }
+}
+// Row Charts
+.row-charts {
+  .chart-header {
+    margin-bottom: 20px;
+    h2 {
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+  }
+  .highcharts-title {
+    font-size: $h4-size !important;
+    font-family: $font-secondary;
+    text-transform: uppercase;
+  }
+  .col-md-6 {
+    margin: 20px 0;
   }
 }
 // Row Portfolio
@@ -1064,18 +1165,6 @@ body {
       &:last-child {
         margin-right: 0;
       }
-    }
-  }
-}
-// Technology Chart
-.chart-wrapper {
-  margin-top: 40px;
-  #technologyChart {
-    width: 100%;
-    height: 900px;
-    overflow: hidden;
-    @include lg-screen-down {
-      height: 600px;
     }
   }
 }
