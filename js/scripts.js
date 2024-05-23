@@ -339,6 +339,17 @@ chartData.forEach(({ container, title, categories, data }) => {
   createChart(container, title, categories, data);
 });
 
+/**
+ * Fetches project data and dynamically generates project cards and modals.
+ *
+ * This script waits for the DOM content to be fully loaded, then:
+ * 1. Fetches project data from a `projects.json` file.
+ * 2. Creates and appends project cards to the `projects-container`.
+ * 3. Creates and appends corresponding modals to the `modal-container`.
+ * 4. Adds event listeners for opening and closing the modals.
+ * 5. Enables closing modals by clicking outside the modal content.
+ *
+ */
 document.addEventListener("DOMContentLoaded", () => {
   fetch("projects.json")
     .then((response) => response.json())
@@ -390,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
                       (screenshot) => `
               <div class="img-wrapper">
                 <h4>${screenshot.title}</h4>
-                <img src="${screenshot.src}" alt="${screenshot.title}" width="800"/>
+                <img data-src="${screenshot.src}" alt="${screenshot.title}" width="800"/>
               </div>`
                     )
                     .join("")}`
@@ -409,6 +420,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const projectId = event.currentTarget.getAttribute("data-project-id");
           const modal = document.getElementById(`${projectId}-modal`);
           modal.showModal();
+
+          // Lazy load images in the modal
+          modal.querySelectorAll("img[data-src]").forEach((img) => {
+            img.setAttribute("src", img.getAttribute("data-src"));
+            img.removeAttribute("data-src");
+          });
         });
       });
 
