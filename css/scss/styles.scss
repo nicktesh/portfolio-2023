@@ -26,6 +26,9 @@ body {
   &.scroll {
     overflow-y: hidden;
   }
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 h1,
 h2,
@@ -513,9 +516,9 @@ body {
       background-repeat: repeat;
       transition: background-color 1s;
       transition-delay: 0.2s;
-      h2,
-      h3,
-      p {
+      h2:not(.dialog h2),
+      h3:not(.dialog h3),
+      p:not(.dialog p) {
         color: $color-white;
         transition: color 1s;
         transition-delay: 0.2s;
@@ -578,7 +581,7 @@ body {
     #contact {
       .social-links {
         img {
-          filter: invert(100%);
+          filter: invert(100%) brightness(1000%);
         }
         a {
           color: $color-white;
@@ -1039,7 +1042,11 @@ body {
   .content {
     margin-bottom: 30px;
   }
+  .col-lg-4 {
+    margin: 10px 0;
+  }
   .card-wrapper {
+    height: 100%;
     background-color: $color-white;
     border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -1128,23 +1135,40 @@ body {
   background-color: #fff;
   overflow-y: auto;
   max-height: 80vh;
+  @include md-screen-down {
+    max-width: 90%;
+  }
   &::backdrop {
     background: rgba(0, 0, 0, 0.6);
   }
-  .close {
-    background: none;
-    border: none;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    cursor: pointer;
-    &:hover,
-    &:active,
-    &:focus {
-      color: #000;
-      text-decoration: none;
+  .dialog-header {
+    position: fixed;
+    max-width: 80%;
+    width: 90%;
+    margin-left: -20px;
+    @include md-screen-down {
+      max-width: 90%;
+    }
+    .close {
+      background: none;
+      border: none;
+      color: $color-primary;
+      font-size: 45px;
+      font-weight: bold;
+      opacity: 1;
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      cursor: pointer;
+      &:hover,
+      &:active,
+      &:focus {
+        opacity: 0.6;
+        text-decoration: none;
+      }
+      @include md-screen-down {
+        font-size: 30px;
+      }
     }
   }
   .dialog-content {
@@ -1166,12 +1190,10 @@ body {
   }
   .scroll-indicator {
     font-size: 14px;
-    color: $color-text;
+    color: $color-primary;
+    font-weight: 700;
+    font-style: italic;
     margin-bottom: 20px;
-    &:before {
-      content: "↓ Scroll down to see full project details ↓";
-      display: block;
-    }
   }
 }
 
