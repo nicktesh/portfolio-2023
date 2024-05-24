@@ -158,6 +158,9 @@ img {
 .p-0 {
   padding: 0;
 }
+.disable-pointer-events {
+  pointer-events: none;
+}
 // Skip Links
 .skip-link-wrapper {
   .skip-link {

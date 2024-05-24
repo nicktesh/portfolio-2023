@@ -340,6 +340,49 @@ chartData.forEach(({ container, title, categories, data }) => {
 });
 
 /**
+ * This script manages pointer events for elements with the 'single-chart' class
+ * based on touch interactions. It disables pointer events when a touchstart is detected and
+ * re-enables them when the touch ends.
+ *
+ */
+
+document.addEventListener("DOMContentLoaded", function () {
+  let isTouchingChart = false;
+
+  // Disables pointer events for all elements with the 'single-chart' class.
+  function disablePointerEvents() {
+    document.querySelectorAll(".single-chart").forEach(function (chart) {
+      chart.classList.add("disable-pointer-events");
+    });
+  }
+
+  // Enables pointer events for all elements with the 'single-chart' class.
+  function enablePointerEvents() {
+    document.querySelectorAll(".single-chart").forEach(function (chart) {
+      chart.classList.remove("disable-pointer-events");
+    });
+  }
+
+  // Adds touchstart event listeners to all elements with the 'single-chart' class.
+  // Disables pointer events when touchstart is detected.
+  document.querySelectorAll(".single-chart").forEach(function (chart) {
+    chart.addEventListener("touchstart", function () {
+      isTouchingChart = true;
+      disablePointerEvents();
+    });
+  });
+
+  // Adds a touchend event listener to the document.
+  // Re-enables pointer events when the touch ends.
+  document.addEventListener("touchend", function () {
+    if (isTouchingChart) {
+      isTouchingChart = false;
+      enablePointerEvents();
+    }
+  });
+});
+
+/**
  * Fetches project data and dynamically generates project cards and modals.
  *
  * This script waits for the DOM content to be fully loaded, then:

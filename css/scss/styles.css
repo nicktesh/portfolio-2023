@@ -423,6 +423,9 @@ img {
 .p-0 {
   padding: 0; }
 
+.disable-pointer-events {
+  pointer-events: none; }
+
 .skip-link-wrapper .skip-link {
   position: absolute;
   top: -40px;
