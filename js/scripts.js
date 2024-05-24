@@ -345,7 +345,7 @@ chartData.forEach(({ container, title, categories, data }) => {
  * This script waits for the DOM content to be fully loaded, then:
  * 1. Fetches project data from a `projects.json` file.
  * 2. Creates and appends project cards to the `projects-container`.
- * 3. Creates and appends corresponding modals to the `modal-container`.
+ * 3. Creates and appends corresponding modals to the `modal-container` upon clicking a card.
  * 4. Adds event listeners for opening and closing the modals.
  * 5. Enables closing modals by clicking outside the modal content.
  * 6. Traps focus within the modal when it is open.
@@ -353,23 +353,31 @@ chartData.forEach(({ container, title, categories, data }) => {
  *
  */
 document.addEventListener("DOMContentLoaded", () => {
+  let projectsData = [];
+
   fetch("projects.json")
     .then((response) => response.json())
     .then((data) => {
+      projectsData = data;
       const projectsContainer = document.getElementById("projects-container");
-      const modalContainer = document.getElementById("modal-container");
-      const body = document.body;
 
       data.forEach((project) => {
         // Create project card
         const card = document.createElement("div");
-        card.classList.add("col-lg-4");
+        card.classList.add("col-lg-4", "col-md-6");
         card.innerHTML = `
           <div class="card-wrapper" data-project-id="${project.id}" tabindex="0" role="button" aria-pressed="false">
             <div class="image-wrapper">
               <figure>
                 <img src="${project.image}" alt="${project.title}" />
               </figure>
+            </div>
+            <div class="multi-colored-bar">
+              <div class="color-segment color1"></div>
+              <div class="color-segment color2"></div>
+              <div class="color-segment color3"></div>
+              <div class="color-segment color4"></div>
+              <div class="color-segment color5"></div>
             </div>
             <div class="content-wrapper">
               <h3>${project.title}</h3>
@@ -381,62 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
         projectsContainer.appendChild(card);
-
-        // Create project modal
-        const dialog = document.createElement("dialog");
-        dialog.classList.add("dialog");
-        dialog.setAttribute("id", `${project.id}-modal`);
-        dialog.setAttribute("aria-modal", "true");
-        dialog.setAttribute("role", "dialog");
-        dialog.innerHTML = `
-          <div class="dialog-header">
-            <button class="close" data-project-id="${project.id}" aria-label="Close">&times;</button>
-          </div>
-          <div class="dialog-content">
-            <span class="scroll-indicator">Scroll down to see full project details</span>
-            <h2>${project.title}</h2>
-            <p>${project.overview}</p>
-            ${project.roleText ? `<h3>My Role</h3><p>${project.roleText}</p><ul>${project.roles.map((role) => `<li>${role}</li>`).join("")}</ul>` : ""}
-            <h3>Technologies Used</h3>
-            <ul>${project.technologies.map((tech) => `<li>${tech}</li>`).join("")}</ul>
-            ${project.highlights.length ? `<h3>Project Highlights</h3><ul>${project.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}</ul>` : ""}
-            ${
-              project.screenshots.length
-                ? `<h3>Screenshots from Live Site</h3>${project.screenshots
-                    .map(
-                      (screenshot) => `
-              <div class="img-wrapper">
-                <h4>${screenshot.title}</h4>
-                <img data-src="${screenshot.src}" alt="${screenshot.title}" width="800"/>
-              </div>`
-                    )
-                    .join("")}`
-                : ""
-            }
-            ${project.link ? `<a href="${project.link}" class="primary-btn" target="_blank">VIEW PROJECT ON GITHUB</a>` : ""}
-            ${project.liveSite ? `<p><strong>${project.liveSiteText}</strong></p><a href="${project.liveSite}" class="primary-btn" target="_blank">VIEW LIVE SITE</a>` : ""}
-          </div>
-        `;
-        modalContainer.appendChild(dialog);
       });
-
-      // Function to open the modal and lazy load images
-      function openModal(projectId) {
-        const modal = document.getElementById(`${projectId}-modal`);
-        modal.showModal();
-
-        // Lazy load images in the modal
-        modal.querySelectorAll("img[data-src]").forEach((img) => {
-          img.setAttribute("src", img.getAttribute("data-src"));
-          img.removeAttribute("data-src");
-        });
-
-        // Add class to disable body scroll
-        body.classList.add("modal-open");
-
-        // Trap focus inside the modal
-        trapFocus(modal);
-      }
 
       // Event listeners for opening modals
       document.querySelectorAll(".card-wrapper").forEach((card) => {
@@ -453,58 +406,154 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
       });
-
-      // Event listeners for closing modals
-      document.querySelectorAll(".close").forEach((button) => {
-        button.addEventListener("click", (event) => {
-          const projectId = event.currentTarget.getAttribute("data-project-id");
-          const modal = document.getElementById(`${projectId}-modal`);
-          modal.close();
-
-          // Remove class to enable body scroll
-          body.classList.remove("modal-open");
-        });
-      });
-
-      // Close modal when clicking outside of the modal content
-      document.addEventListener("click", (event) => {
-        if (event.target.tagName === "DIALOG") {
-          event.target.close();
-          // Remove class to enable body scroll
-          body.classList.remove("modal-open");
-        }
-      });
-
-      // Trap focus within the modal
-      function trapFocus(modal) {
-        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-        const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
-        const focusableContent = modal.querySelectorAll(focusableElements);
-        const lastFocusableElement = focusableContent[focusableContent.length - 1];
-
-        document.addEventListener("keydown", function (e) {
-          let isTabPressed = e.key === "Tab" || e.keyCode === 9;
-
-          if (!isTabPressed) {
-            return;
-          }
-
-          if (e.shiftKey) {
-            // if shift key pressed for shift + tab combination
-            if (document.activeElement === firstFocusableElement) {
-              lastFocusableElement.focus(); // add focus for the last focusable element
-              e.preventDefault();
-            }
-          } else {
-            // if tab key is pressed
-            if (document.activeElement === lastFocusableElement) {
-              // if focused has reached to last focusable element then focus first focusable element after pressing tab
-              firstFocusableElement.focus(); // add focus for the first focusable element
-              e.preventDefault();
-            }
-          }
-        });
-      }
     })
     .catch((error) => console.error("Error fetching project data:", error));
+
+  // Function to open the modal and lazy load images
+  function openModal(projectId) {
+    const project = projectsData.find((p) => p.id === projectId);
+    const modalContainer = document.getElementById("modal-container");
+    const body = document.body;
+
+    // Create project modal
+    const dialog = document.createElement("dialog");
+    dialog.classList.add("dialog");
+    dialog.setAttribute("id", `${project.id}-modal`);
+    dialog.setAttribute("aria-modal", "true");
+    dialog.setAttribute("role", "dialog");
+    dialog.innerHTML = `
+      <div class="dialog-header">
+        <button class="close" data-project-id="${project.id}" aria-label="Close">&times;</button>
+      </div>
+      <div class="dialog-content">
+        <span class="scroll-indicator">Scroll down to see full project details</span>
+        <div class="multi-colored-bar">
+          <div class="color-segment color1"></div>
+          <div class="color-segment color2"></div>
+          <div class="color-segment color3"></div>
+          <div class="color-segment color4"></div>
+          <div class="color-segment color5"></div>
+        </div>
+        <h2>${project.title}</h2>
+        <p>${project.overview}</p>
+        ${
+          project.roleText
+            ? `
+          <div class="multi-colored-bar">
+            <div class="color-segment color1"></div>
+            <div class="color-segment color2"></div>
+            <div class="color-segment color3"></div>
+            <div class="color-segment color4"></div>
+            <div class="color-segment color5"></div>
+          </div>
+          <h3>My Role</h3>
+          <p>${project.roleText}</p>
+          <ul>${project.roles.map((role) => `<li>${role}</li>`).join("")}</ul>
+          `
+            : ""
+        }
+        <div class="multi-colored-bar">
+          <div class="color-segment color1"></div>
+          <div class="color-segment color2"></div>
+          <div class="color-segment color3"></div>
+          <div class="color-segment color4"></div>
+          <div class="color-segment color5"></div>
+        </div>
+        <h3>Technologies Used</h3>
+        <ul>${project.technologies.map((tech) => `<li>${tech}</li>`).join("")}</ul>
+        <div class="multi-colored-bar">
+          <div class="color-segment color1"></div>
+          <div class="color-segment color2"></div>
+          <div class="color-segment color3"></div>
+          <div class="color-segment color4"></div>
+          <div class="color-segment color5"></div>
+        </div>
+        ${project.highlights.length ? `<h3>Project Highlights</h3><ul>${project.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}</ul>` : ""}
+        ${project.link ? `<a href="${project.link}" class="primary-btn" target="_blank">VIEW PROJECT ON GITHUB</a>` : ""}
+        ${project.liveSite ? `<p><strong>${project.liveSiteText}</strong></p><a href="${project.liveSite}" class="primary-btn" target="_blank">VIEW LIVE SITE</a>` : ""}
+        <div class="multi-colored-bar">
+          <div class="color-segment color1"></div>
+          <div class="color-segment color2"></div>
+          <div class="color-segment color3"></div>
+          <div class="color-segment color4"></div>
+          <div class="color-segment color5"></div>
+        </div>
+        ${
+          project.screenshots.length
+            ? `<h3>Screenshots from Live Site</h3>${project.screenshots
+                .map(
+                  (screenshot) => `
+          <div class="img-wrapper">
+            <h4>${screenshot.title}</h4>
+            <img data-src="${screenshot.src}" alt="${screenshot.title}" width="${screenshot.width}"/>
+          </div>`
+                )
+                .join("")}`
+            : ""
+        }
+      </div>
+    `;
+    modalContainer.appendChild(dialog);
+
+    dialog.showModal();
+
+    // Lazy load images in the modal
+    dialog.querySelectorAll("img[data-src]").forEach((img) => {
+      img.setAttribute("src", img.getAttribute("data-src"));
+      img.removeAttribute("data-src");
+    });
+
+    // Add class to disable body scroll
+    body.classList.add("modal-open");
+
+    // Trap focus inside the modal
+    trapFocus(dialog);
+
+    // Event listener for closing modals
+    dialog.querySelector(".close").addEventListener("click", () => {
+      dialog.close();
+      body.classList.remove("modal-open");
+      dialog.remove();
+    });
+
+    // Close modal when clicking outside of the modal content
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+        body.classList.remove("modal-open");
+        dialog.remove();
+      }
+    });
+  }
+
+  // Trap focus within the modal
+  function trapFocus(modal) {
+    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
+    const focusableContent = modal.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    document.addEventListener("keydown", function (e) {
+      let isTabPressed = e.key === "Tab" || e.keyCode === 9;
+
+      if (!isTabPressed) {
+        return;
+      }
+
+      if (e.shiftKey) {
+        // if shift key pressed for shift + tab combination
+        if (document.activeElement === firstFocusableElement) {
+          lastFocusableElement.focus(); // add focus for the last focusable element
+          e.preventDefault();
+        }
+      } else {
+        // if tab key is pressed
+        if (document.activeElement === lastFocusableElement) {
+          // if focused has reached to last focusable element then focus first focusable element after pressing tab
+          firstFocusableElement.focus(); // add focus for the first focusable element
+          e.preventDefault();
+        }
+      }
+    });
+  }
 });

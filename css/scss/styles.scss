@@ -23,9 +23,7 @@ body {
   @include md-screen-down {
     font-size: $p-mobile-size;
   }
-  &.scroll {
-    overflow-y: hidden;
-  }
+  &.scroll,
   &.modal-open {
     overflow: hidden;
   }
@@ -230,8 +228,7 @@ img {
   justify-content: center;
   background-color: $color-primary;
   color: $color-white;
-  border: 2px solid $color-primary;
-  border-radius: 10px;
+  border: 4px solid $color-primary;
   width: fit-content;
   padding: 8px 20px;
   font-family: $font-secondary;
@@ -244,7 +241,6 @@ img {
   &:active,
   &:focus {
     background-color: transparent;
-    border: 2px solid $color-primary;
     color: $color-primary;
   }
 }
@@ -526,7 +522,7 @@ body {
     }
     .primary-btn {
       background-color: $color-night-lighter;
-      border: 1px solid $color-night-lighter;
+      border: 4px solid $color-night-lighter;
       color: $color-white;
       transition: background-color 1s border 1s color 1s;
       transition-delay: 0.2s;
@@ -534,18 +530,13 @@ body {
       &:focus,
       &:active {
         background-color: transparent;
-        border: 1px solid $color-white;
-        color: $color-white;
+        color: $color-primary;
       }
     }
-    .module.row-about-me {
-      .content {
-        .color-segment.color1 {
-          background-color: $color-white;
-          transition: background-color 1s;
-          transition-delay: 0.2s;
-        }
-      }
+    .color-segment.color1:not(.dialog .color-segment.color1) {
+      background-color: $color-white;
+      transition: background-color 1s;
+      transition-delay: 0.2s;
     }
     .module.bg-neutral {
       background-color: $color-night-medium;
@@ -979,6 +970,9 @@ body {
 }
 // Row About Me
 .row-about-me {
+  .multi-colored-bar {
+    margin-bottom: 20px;
+  }
   .content {
     transition: border-top 1s;
     transition-delay: 0.2s;
@@ -986,35 +980,6 @@ body {
       margin-bottom: 15px;
       &:last-child {
         margin-bottom: 0;
-      }
-    }
-    .multi-colored-bar {
-      display: flex;
-      height: 4px;
-      width: 100%;
-      margin-bottom: 20px;
-      .color-segment {
-        height: 100%;
-        &.color1 {
-          background-color: #0b192b;
-          width: 5%;
-        }
-        &.color2 {
-          background-color: #ef6262;
-          width: 10%;
-        }
-        &.color3 {
-          background-color: #f3aa60;
-          width: 20%;
-        }
-        &.color4 {
-          background-color: #98c1d9;
-          width: 25%;
-        }
-        &.color5 {
-          background-color: #5e81ac;
-          width: 40%;
-        }
       }
     }
   }
@@ -1048,20 +1013,40 @@ body {
   .card-wrapper {
     height: 100%;
     background-color: $color-white;
-    border-radius: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     &:hover,
     &:active,
     &:focus {
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 12px 24px rgba(0, 0, 0, 0.15);
+      .image-wrapper figure {
+        &::after {
+          opacity: 0.6;
+        }
+      }
     }
     .image-wrapper {
       figure {
+        position: relative;
         margin-bottom: 0;
-        img {
-          border-top-left-radius: 20px;
-          border-top-right-radius: 20px;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to top, $color-primary, transparent);
+          opacity: 1;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, $color-primary, transparent);
+          opacity: 0;
+          transition: all 0.3s ease;
         }
       }
     }
@@ -1072,7 +1057,7 @@ body {
           color: $color-primary;
           font-weight: 700;
           font-style: italic;
-          font-size: 12px;
+          font-size: 14px;
         }
       }
     }
@@ -1123,13 +1108,41 @@ body {
     }
   }
 }
+// Global Multi-Color Bar
+.multi-colored-bar {
+  display: flex;
+  height: 6px;
+  width: 100%;
+  .color-segment {
+    height: 100%;
+    &.color1 {
+      background-color: #0b192b;
+      width: 5%;
+    }
+    &.color2 {
+      background-color: #ef6262;
+      width: 10%;
+    }
+    &.color3 {
+      background-color: #f3aa60;
+      width: 20%;
+    }
+    &.color4 {
+      background-color: #98c1d9;
+      width: 25%;
+    }
+    &.color5 {
+      background-color: #5e81ac;
+      width: 40%;
+    }
+  }
+}
 // Global Dialog Styles
 .dialog {
   border: none;
-  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 80%;
-  width: 90%;
+  max-width: 70%;
+  width: 80%;
   margin: auto;
   padding: 20px;
   background-color: #fff;
@@ -1143,8 +1156,8 @@ body {
   }
   .dialog-header {
     position: fixed;
-    max-width: 80%;
-    width: 90%;
+    max-width: 70%;
+    width: 80%;
     margin-left: -20px;
     @include md-screen-down {
       max-width: 90%;
@@ -1172,13 +1185,36 @@ body {
     }
   }
   .dialog-content {
-    padding: 20px;
+    padding: 40px;
+    @include md-screen-down {
+      padding: 20px;
+    }
+    .multi-colored-bar {
+      margin-top: 40px;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+    h3,
+    h4 {
+      margin-top: 40px;
+    }
+    ul {
+      list-style: square;
+      padding-left: 20px;
+      li {
+        &::marker {
+          font-size: 20px;
+          color: $color-primary;
+        }
+      }
+    }
     .img-wrapper {
       margin-bottom: 40px;
       img {
-        width: 800px;
+        width: auto;
         max-width: 100%;
-        border: 1px solid $color-black;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
       }
       h4 {
         margin-bottom: 40px;
@@ -1189,11 +1225,12 @@ body {
     }
   }
   .scroll-indicator {
+    display: block;
+    margin-bottom: -20px;
     font-size: 14px;
     color: $color-primary;
     font-weight: 700;
     font-style: italic;
-    margin-bottom: 20px;
   }
 }
 
