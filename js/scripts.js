@@ -250,6 +250,9 @@ const sharedChartOptions = {
   legend: {
     enabled: false,
   },
+  tooltip: {
+    enabled: false,
+  },
   responsive: {
     rules: [
       {
@@ -292,6 +295,7 @@ const createChart = (container, title, categories, data) => {
           fontFamily: "Cabin, sans-serif",
           color: "#202020",
         },
+        distance: 25,
       },
       tickmarkPlacement: "on",
       lineWidth: 0,
@@ -301,6 +305,23 @@ const createChart = (container, title, categories, data) => {
         name: "Proficiency Level",
         data: generateSeriesData(data),
         pointPlacement: "on",
+        dataLabels: {
+          enabled: true,
+          align: "center",
+          verticalAlign: "middle",
+          inside: true,
+          style: {
+            fontSize: "14px",
+            fontWeight: "bold",
+            color: "#202020",
+          },
+          formatter: function () {
+            return this.y;
+          },
+          overflow: "none",
+          crop: false,
+          allowOverlap: true,
+        },
       },
     ],
   });
@@ -337,49 +358,6 @@ const chartData = [
 // Create all charts
 chartData.forEach(({ container, title, categories, data }) => {
   createChart(container, title, categories, data);
-});
-
-/**
- * This script manages pointer events for elements with the 'single-chart' class
- * based on touch interactions. It disables pointer events when a touchstart is detected and
- * re-enables them when the touch ends.
- *
- */
-
-document.addEventListener("DOMContentLoaded", function () {
-  let isTouchingChart = false;
-
-  // Disables pointer events for all elements with the 'single-chart' class.
-  function disablePointerEvents() {
-    document.querySelectorAll(".single-chart").forEach(function (chart) {
-      chart.classList.add("disable-pointer-events");
-    });
-  }
-
-  // Enables pointer events for all elements with the 'single-chart' class.
-  function enablePointerEvents() {
-    document.querySelectorAll(".single-chart").forEach(function (chart) {
-      chart.classList.remove("disable-pointer-events");
-    });
-  }
-
-  // Adds touchstart event listeners to all elements with the 'single-chart' class.
-  // Disables pointer events when touchstart is detected.
-  document.querySelectorAll(".single-chart").forEach(function (chart) {
-    chart.addEventListener("touchstart", function () {
-      isTouchingChart = true;
-      disablePointerEvents();
-    });
-  });
-
-  // Adds a touchend event listener to the document.
-  // Re-enables pointer events when the touch ends.
-  document.addEventListener("touchend", function () {
-    if (isTouchingChart) {
-      isTouchingChart = false;
-      enablePointerEvents();
-    }
-  });
 });
 
 /**

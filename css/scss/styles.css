@@ -423,9 +423,6 @@ img {
 .p-0 {
   padding: 0; }
 
-.disable-pointer-events {
-  pointer-events: none; }
-
 .skip-link-wrapper .skip-link {
   position: absolute;
   top: -40px;
@@ -1101,6 +1098,8 @@ body.nighttime {
   .row-charts .chart-header h2 {
     text-transform: uppercase;
     margin-bottom: 10px; }
+.row-charts .single-chart {
+  pointer-events: none; }
 .row-charts .highcharts-title {
   font-size: 20px !important;
   font-family: "Kanit", sans-serif;
