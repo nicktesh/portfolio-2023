@@ -4,7 +4,7 @@
     "title": "JustGPTs",
     "description": "JustGPTs is a directory website for custom ChatGPT models.",
     "image": "images/projects/justgpts-img-min.jpg",
-    "link": null,
+    "githubLink": null,
     "liveSiteText": "Visit Live Site:",
     "liveSite": "https://justgpts.com/",
     "tags": ["Personal Project"],
@@ -36,7 +36,7 @@
     "title": "Dollar Tree Inc.",
     "description": "The Corporate and IR website for Dollar Tree Inc.",
     "image": "images/projects/dollartree-img-min.jpg",
-    "link": null,
+    "githubLink": null,
     "liveSiteText": "While I don't own the code or the site, you can visit the live Dollar Tree Inc. site to see the final product:",
     "liveSite": "https://corporate.dollartree.com/",
     "tags": ["Company Project"],
@@ -69,7 +69,7 @@
     "title": "Oxford Biodynamics",
     "description": "The Corporate and IR website for Oxford Biodynamics.",
     "image": "images/projects/oxford-bio-img-min.jpg",
-    "link": null,
+    "githubLink": null,
     "liveSiteText": "While I don't own the code or the site, you can visit the live Oxford Biodynamics site to see the final product:",
     "liveSite": "https://www.oxfordbiodynamics.com/",
     "tags": ["Company Project"],
@@ -90,7 +90,7 @@
     "title": "Algernon Pharmaceuticals",
     "description": "The Corporate and IR website for Algernon Pharmaceuticals.",
     "image": "images/projects/algernon-img-min.jpg",
-    "link": null,
+    "githubLink": null,
     "liveSiteText": "While I don't own the code or the site, you can visit the live Algernon Pharmaceuticals site to see the final product:",
     "liveSite": "https://www.algernonpharmaceuticals.com/",
     "tags": ["Company Project"],
@@ -110,14 +110,13 @@
       }
     ]
   },
-
   {
     "id": "portfolio-2021",
     "title": "Portfolio 2021",
     "description": "My previous portfolio site from 2021.",
     "image": "images/projects/portfolio-2021-img-min.jpg",
-    "link": null,
-    "liveSiteText": "Checkout my previous portfolio site here:",
+    "githubLink": "https://github.com/nicktesh/portfolio-2021",
+    "liveSiteText": "",
     "liveSite": "https://nicktesh.github.io/portfolio-2021/",
     "tags": ["Personal Project"],
     "overview": "My portfolio site from 2020/2021 is one I like to keep on display for two reasons. Firstly, it's a reminder of how far I've come with my skillset and knowledge. Secondly, I still love the design and had so much fun creating all of the graphics used on the site.",
@@ -133,6 +132,35 @@
       {
         "title": "Full Corporate Homepage",
         "src": "images/projects/portfolio-2021-full-min.png"
+      }
+    ]
+  },
+  {
+    "id": "signature-creator",
+    "title": "Digital Signature Creator",
+    "description": "The Signature Creator tool lets users create customizable digital signatures by drawing or typing.",
+    "image": "images/projects/signature-creator-img-min.jpg",
+    "githubLink": "https://github.com/nicktesh/signature-creator",
+    "liveSiteText": "",
+    "liveSite": "https://nicktesh.github.io/signature-creator/",
+    "tags": ["Freelance Project"],
+    "overview": "I created a demo of the Signature Creator tool, which originated from a freelance project. This tool allows users to generate digital signatures by drawing or typing, with features for customizing pen settings, font styles, and export options. The demo highlights my skills in developing user-friendly and versatile digital tools.",
+    "roleText": "",
+    "roles": [],
+    "technologies": ["HTML", "SCSS", "JavaScript", "Bootstrap"],
+    "highlights": ["Enabled customizable digital signatures through drawing or typing.", "Integrated features for adjusting pen settings, choosing font styles, and resizing text.", "Implemented functionality for exporting signatures as PNG or JPG files.", "Ensured a user-friendly interface with intuitive controls.", "Showcased versatility and attention to detail in digital tool development."],
+    "screenshots": [
+      {
+        "title": "Preview of Canvas Drawing",
+        "src": "images/projects/signature-creator-feature-1-min.jpg"
+      },
+      {
+        "title": "Preview of Canvas Typing",
+        "src": "images/projects/signature-creator-feature-2-min.jpg"
+      },
+      {
+        "title": "Full Homepage",
+        "src": "images/projects/signature-creator-full-min.png"
       }
     ]
   }

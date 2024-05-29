@@ -1223,8 +1223,28 @@ body {
         margin-bottom: 40px;
       }
     }
-    a {
-      margin: 20px 0 40px 0;
+    .btn-wrapper {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      @include md-screen-down {
+        flex-flow: column;
+      }
+      a {
+        margin: 0 20px 20px 0;
+        margin-right: 20px;
+        @include md-screen-down {
+          margin-right: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+      .btn-text {
+        p {
+          margin-bottom: 20px;
+        }
+      }
     }
   }
   .scroll-indicator {

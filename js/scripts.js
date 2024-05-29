@@ -490,8 +490,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="color-segment color5"></div>
         </div>
         ${project.highlights.length ? `<h3>Project Highlights</h3><ul>${project.highlights.map((highlight) => `<li>${highlight}</li>`).join("")}</ul>` : ""}
-        ${project.link ? `<a href="${project.link}" class="primary-btn" target="_blank">VIEW PROJECT ON GITHUB</a>` : ""}
-        ${project.liveSite ? `<p><strong>${project.liveSiteText}</strong></p><a href="${project.liveSite}" class="primary-btn" target="_blank">VIEW LIVE SITE</a>` : ""}
+        <div class="btn-wrapper">
+          ${project.githubLink ? `<a href="${project.githubLink}" class="primary-btn" target="_blank">VIEW GITHUB REPO</a>` : ""}
+          <div class="btn-text">
+            ${project.liveSiteText ? `<p><strong>${project.liveSiteText}</strong></p>` : ""}
+            ${project.liveSite ? `<a href="${project.liveSite}" class="primary-btn" target="_blank">VISIT SITE</a>` : ""}
+          </div>
+        </div>
         <div class="multi-colored-bar">
           <div class="color-segment color1"></div>
           <div class="color-segment color2"></div>
