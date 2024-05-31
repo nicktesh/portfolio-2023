@@ -163,5 +163,30 @@
         "src": "images/projects/signature-creator-full-min.png"
       }
     ]
+  },
+  {
+    "id": "password-generator",
+    "title": "Password Generator",
+    "description": "The Password Generator tool helps you generate a secure password instantly.",
+    "image": "images/projects/password-generator-img-min.jpg",
+    "githubLink": "https://github.com/nicktesh/password-generator",
+    "liveSiteText": "",
+    "liveSite": "https://nicktesh.github.io/password-generator/",
+    "tags": ["Personal Project"],
+    "overview": "I created a password generator tool to quickly generate secure and customizable password. This tool allows users to generate strong and unique passwords with options to customize length and include letters, numbers, and special characters. The design features a user-friendly interface with real-time visual feedback and a visually appealing color palette of pinks and purples. This demo showcases my skills in developing secure, user-friendly, and aesthetically pleasing digital tools.",
+    "roleText": "",
+    "roles": [],
+    "technologies": ["HTML", "SCSS", "JavaScript", "Bootstrap"],
+    "highlights": ["Developed a robust password generator tool with customizable options for length and character types.", "Implemented secure algorithms to ensure the generation of strong and unique passwords.", "Enabled real-time password generation with instant visual feedback.", "Ensured compatibility across various devices and browsers for seamless access.", "Demonstrated a focus on security, usability, and aesthetic design in tool development."],
+    "screenshots": [
+      {
+        "title": "Preview of Custom Word Option",
+        "src": "images/projects/password-generator-feature-1-min.png"
+      },
+      {
+        "title": "Full Homepage",
+        "src": "images/projects/password-generator-full-min.png"
+      }
+    ]
   }
 ]
