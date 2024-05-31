@@ -173,7 +173,7 @@
     "liveSiteText": "",
     "liveSite": "https://nicktesh.github.io/password-generator/",
     "tags": ["Personal Project"],
-    "overview": "I created a password generator tool to quickly generate secure and customizable password. This tool allows users to generate strong and unique passwords with options to customize length and include letters, numbers, and special characters. The design features a user-friendly interface with real-time visual feedback and a visually appealing color palette of pinks and purples. This demo showcases my skills in developing secure, user-friendly, and aesthetically pleasing digital tools.",
+    "overview": "I created a password generator tool to quickly generate secure and customizable passwords. This tool allows users to generate strong and unique passwords with options to customize length and include letters, numbers, and special characters. The design features a user-friendly interface with real-time visual feedback and a visually appealing color palette of pinks and purples. This demo showcases my skills in developing secure, user-friendly, and aesthetically pleasing digital tools.",
     "roleText": "",
     "roles": [],
     "technologies": ["HTML", "SCSS", "JavaScript", "Bootstrap"],
